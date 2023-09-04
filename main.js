@@ -8,7 +8,7 @@ const cars = [
 		productionStartYear: 1996,
 		productionEndYear: 2003,
 		facelift: '2000',
-		imgUrl: 'https://www.netcarshow.com/Audi-A3_5-door-2000-1600-08.jpg',
+		imgUrl: './img/audi_a3_i.jpg',
 	},
 	{
 		brand: 'BMW',
@@ -17,7 +17,7 @@ const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 2000,
 		facelift: '-',
-		imgUrl: 'https://automotyw.com/wp-content/uploads/photos/nadwozie/bmw_seria-3_e36_compact.jpg',
+		imgUrl: './img/bmw_3_compact_i.jpg',
 	},
 	{
 		brand: 'Citroen',
@@ -26,8 +26,7 @@ const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2005,
 		facelift: '2000',
-		imgUrl:
-			'https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Citroen_Xsara_front_20070609.jpg/800px-Citroen_Xsara_front_20070609.jpg',
+		imgUrl: './img/citroen_xsara_i.jpg',
 	},
 	{
 		brand: 'Fiat',
@@ -36,7 +35,7 @@ const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
-		imgUrl: 'https://parkers-images.bauersecure.com/wp-images/21368/cut-out/930x620/brava.jpg',
+		imgUrl: './img/fiat_brava_i.jpg',
 	},
 	{
 		brand: 'Ford',
@@ -45,7 +44,7 @@ const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2005,
 		facelift: '2001',
-		imgUrl: 'https://www.netcarshow.com/Ford-Focus_5-door-1998-1600-01.jpg',
+		imgUrl: './img/ford_focus_i.jpg',
 	},
 	{
 		brand: 'Honda',
@@ -54,7 +53,7 @@ const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
-		imgUrl: 'https://www.netcarshow.com/Honda-Civic_Hatchback-1995-1600-01.jpg',
+		imgUrl: './img/honda_civic_vi.jpg',
 	},
 	{
 		brand: 'Mazda',
@@ -63,8 +62,7 @@ const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2003,
 		facelift: '2001',
-		imgUrl:
-			'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Mazda_323F_front_20081127.jpg/800px-Mazda_323F_front_20081127.jpg',
+		imgUrl: './img/mazda_323_vi.jpg',
 	},
 	{
 		brand: 'Nissan',
@@ -73,8 +71,7 @@ const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2000,
 		facelift: '1998',
-		imgUrl:
-			'https://prod.pictures.autoscout24.net/listing-images/89052e03-21a4-4699-8153-5583d425c416_f89f16f9-93b0-4d4d-9218-c902419185da.jpg/1920x1080.webp',
+		imgUrl: './img/nissan_almera_i.jpg',
 	},
 	{
 		brand: 'Opel',
@@ -83,7 +80,7 @@ const cars = [
 		productionStartYear: 1998,
 		productionEndYear: '2009',
 		facelift: '-',
-		imgUrl: 'https://flib.samar.pl/700/100/75010969134743a472e.webp',
+		imgUrl: './img/opel_astra_ii.jpg',
 	},
 	{
 		brand: 'Peugeot',
@@ -92,7 +89,7 @@ const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 2002,
 		facelift: '1997, 1999',
-		imgUrl: 'https://www.cars-data.com/pictures/peugeot/peugeot-306_1989_3.jpg',
+		imgUrl: './img/peugeot_306_i.jpg',
 	},
 	{
 		brand: 'Renault',
@@ -101,7 +98,7 @@ const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2003,
 		facelift: '1999',
-		imgUrl: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Renault_Megane_front_20080104.jpg',
+		imgUrl: './img/renault_megane_i.jpg',
 	},
 	{
 		brand: 'Seat',
@@ -110,7 +107,7 @@ const cars = [
 		productionStartYear: 1999,
 		productionEndYear: 2005,
 		facelift: '-',
-		imgUrl: 'https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1600-03.jpg',
+		imgUrl: './img/seat_leon_i.jpg',
 	},
 	{
 		brand: 'Toyota',
@@ -119,7 +116,7 @@ const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2002,
 		facelift: '1999',
-		imgUrl: 'https://mag.toyota.co.uk/wp-content/uploads/sites/2/2018/10/Corolla-8-08-1.jpg',
+		imgUrl: './img/toyota_corolla_viii.jpg',
 	},
 	{
 		brand: 'Volkswagen',
@@ -128,47 +125,125 @@ const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2003,
 		facelift: '-',
-		imgUrl: 'https://www.netcarshow.com/Volkswagen-Golf_IV-1997-1600-03.jpg',
+		imgUrl: './img/volkswagen_golf_iv.jpg',
 	},
 ];
 
 const AppContainer = document.querySelector('#root');
 
+const CarImg = url => {
+	return React.createElement('img', {
+		src: url,
+		style: { width: '320px', height: '240px', objectFit: 'cover' },
+	});
+};
+
 const CarInfoTitle = title => {
-    return React.createElement('h6', {}, title);
+	return React.createElement(
+		'h6',
+		{
+			style: {
+				marginTop: '0',
+				marginBottom: '8px',
+				fontSize: '20px',
+			},
+		},
+		title
+	);
 };
 
 const CarInfo = info => {
-    return React.createElement('p', {}, info);
+	return React.createElement(
+		'p',
+		{
+			style: {
+				margin: '0',
+				fontSize: '16px',
+			},
+		},
+		info
+	);
 };
 
 const CarInfoBox = (title, info) => {
-    return React.createElement('div', {}, CarInfoTitle(title), CarInfo(info))
-}
+	return React.createElement(
+		'div',
+		{
+			style: {
+				marginBottom: '24px',
+			},
+		},
+		CarInfoTitle(title),
+		CarInfo(info)
+	);
+};
 
 const App = () => {
 	return React.createElement(
 		'div',
 		{},
-		React.createElement('h1', {}, `Segment C Hatchback cars (late 1990's, early 2000's)`),
+		React.createElement(
+			'h1',
+			{
+				style: {
+					textAlign: 'center',
+				},
+			},
+			`Segment C Hatchback cars (late 1990's, early 2000's)`
+		),
 		React.createElement(
 			'div',
-			{},
+			{
+				style: {
+					display: 'flex',
+					justifyContent: 'center',
+					flexWrap: 'wrap',
+				},
+			},
 			cars.map(car => {
 				return React.createElement(
 					'div',
-					{},
-					React.createElement('h4', {}, `${car.brand} ${car.model}`),
+					{
+						style: {
+							margin: '16px',
+							padding: '16px',
+							backgroundColor: '#D9D9D9',
+						},
+					},
+					React.createElement(
+						'h4',
+						{
+							style: {
+								marginTop: '0',
+								marginBottom: '16px',
+								fontSize: '40px',
+							},
+						},
+						`${car.brand} ${car.model}`
+					),
 					React.createElement(
 						'div',
-						{},
-						React.createElement('img', {}),
+						{
+							style: {
+								display: 'flex',
+							},
+						},
+						CarImg(car.imgUrl),
 						React.createElement(
 							'div',
-							{},
-                            CarInfoBox('Generation', car.generation),
-                            CarInfoBox('Production years', `${car.productionStartYear} - ${car.productionEndYear}`),
-                            CarInfoBox('Facelift', car.facelift)
+							{
+								style: {
+									display: 'flex',
+									flexDirection: 'column',
+									marginLeft: '16px',
+								},
+							},
+							CarInfoBox('Generation', car.generation),
+							CarInfoBox(
+								'Production years',
+								`${car.productionStartYear} - ${car.productionEndYear}`
+							),
+							CarInfoBox('Facelift', car.facelift)
 						)
 					)
 				);
