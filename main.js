@@ -132,9 +132,6 @@ const cars = [
 	},
 ];
 
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-
 const AppContainer = document.querySelector('#root');
 
 const CarInfoTitle = title => {
