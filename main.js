@@ -131,6 +131,12 @@ const cars = [
 
 const AppContainer = document.querySelector('#root');
 
+const H1 = () => {
+	return (
+		<h1 style={{ textAlign: 'center' }}>Segment C Hatchback cars (late 1990's, early 2000's)</h1>
+	);
+};
+
 const CarImg = url => {
 	return React.createElement('img', {
 		src: url,
@@ -139,30 +145,11 @@ const CarImg = url => {
 };
 
 const CarInfoTitle = title => {
-	return React.createElement(
-		'h6',
-		{
-			style: {
-				marginTop: '0',
-				marginBottom: '8px',
-				fontSize: '20px',
-			},
-		},
-		title
-	);
+	return <h6 style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px' }}>{title}</h6>;
 };
 
 const CarInfo = info => {
-	return React.createElement(
-		'p',
-		{
-			style: {
-				margin: '0',
-				fontSize: '16px',
-			},
-		},
-		info
-	);
+	return <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
 };
 
 const CarInfoBox = (title, info) => {
@@ -182,15 +169,7 @@ const App = () => {
 	return React.createElement(
 		'div',
 		{},
-		React.createElement(
-			'h1',
-			{
-				style: {
-					textAlign: 'center',
-				},
-			},
-			`Segment C Hatchback cars (late 1990's, early 2000's)`
-		),
+		H1(),
 		React.createElement(
 			'div',
 			{
