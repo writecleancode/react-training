@@ -200,7 +200,7 @@ const App = () => {
 			<Wrapper>
 				{cars.map(car => {
 					return (
-						<CarCard>
+						<CarCard key={car.brand}>
 							<CarName brand={car.brand} model={car.model} />
 							<CarCardRow>
 								<CarImg url={car.imgUrl} />
