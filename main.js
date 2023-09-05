@@ -155,26 +155,21 @@ const AppContainer = document.querySelector('#root');
 // 	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
 // };
 
-// const CarInfoTitle = title => {
-// 	return (
-// 		<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
-// 			{title}
-// 		</p>
-// 	);
-// };
+const CarInfoTitle = props => {
+	return (
+		<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
+			{props.title}
+		</p>
+	);
+};
 
 const CarInfo = props => {
 	return <p style={{ margin: '0', fontSize: '16px' }}>{props.info}</p>;
 };
 
-// const CarInfoBox = (title, info) => {
-// 	return (
-// 		<div style={{ marginBottom: '24px' }}>
-// 			{CarInfoTitle(title)}
-// 			{CarInfo(info)}
-// 		</div>
-// 	);
-// };
+const CarInfoBox = props => {
+	return <div style={{ marginBottom: '24px' }}>{props.children}</div>;
+};
 
 const App = () => {
 	return (
@@ -199,42 +194,18 @@ const App = () => {
 									style={{ width: '320px', height: '240px', objectFit: 'cover' }}
 								/>
 								<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>
-									<div style={{ marginBottom: '24px' }}>
-										<p
-											style={{
-												marginTop: '0',
-												marginBottom: '8px',
-												fontSize: '20px',
-												fontWeight: 'bold',
-											}}>
-											Generation
-										</p>
+									<CarInfoBox>
+										<CarInfoTitle title={'Generation'} />
 										<CarInfo info={car.generation} />
-									</div>
-									<div style={{ marginBottom: '24px' }}>
-										<p
-											style={{
-												marginTop: '0',
-												marginBottom: '8px',
-												fontSize: '20px',
-												fontWeight: 'bold',
-											}}>
-											Production years
-										</p>
+									</CarInfoBox>
+									<CarInfoBox>
+										<CarInfoTitle title={'Production years'} />
 										<CarInfo info={`${car.productionStartYear} - ${car.productionEndYear}`} />
-									</div>
-									<div style={{ marginBottom: '24px' }}>
-										<p
-											style={{
-												marginTop: '0',
-												marginBottom: '8px',
-												fontSize: '20px',
-												fontWeight: 'bold',
-											}}>
-											Facelift
-										</p>
+									</CarInfoBox>
+									<CarInfoBox>
+										<CarInfoTitle title={'Facelift'} />
 										<CarInfo info={car.facelift} />
-									</div>
+									</CarInfoBox>
 								</div>
 							</div>
 						</div>
