@@ -163,9 +163,9 @@ const AppContainer = document.querySelector('#root');
 // 	);
 // };
 
-// const CarInfo = info => {
-// 	return <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
-// };
+const CarInfo = props => {
+	return <p style={{ margin: '0', fontSize: '16px' }}>{props.info}</p>;
+};
 
 // const CarInfoBox = (title, info) => {
 // 	return (
@@ -209,13 +209,7 @@ const App = () => {
 											}}>
 											Generation
 										</p>
-										<p
-											style={{
-												margin: '0',
-												fontSize: '16px',
-											}}>
-											{car.generation}
-										</p>
+										<CarInfo info={car.generation} />
 									</div>
 									<div style={{ marginBottom: '24px' }}>
 										<p
@@ -227,11 +221,7 @@ const App = () => {
 											}}>
 											Production years
 										</p>
-										<p
-											style={{
-												margin: '0',
-												fontSize: '16px',
-											}}>{`${car.productionStartYear} - ${car.productionEndYear}`}</p>
+										<CarInfo info={`${car.productionStartYear} - ${car.productionEndYear}`} />
 									</div>
 									<div style={{ marginBottom: '24px' }}>
 										<p
@@ -243,7 +233,7 @@ const App = () => {
 											}}>
 											Facelift
 										</p>
-										<p style={{ margin: '0', fontSize: '16px' }}>{car.facelift}</p>
+										<CarInfo info={car.facelift} />
 									</div>
 								</div>
 							</div>
