@@ -131,29 +131,61 @@ const cars = [
 
 const AppContainer = document.querySelector('#root');
 
-// const Title = () => {
-// 	return (
-// 		<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
-// 			Segment C Hatchback cars (late 1990's, early 2000's)
-// 		</p>
-// 	);
-// };
+const Title = () => {
+	return (
+		<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
+			Segment C Hatchback cars (late 1990's, early 2000's)
+		</p>
+	);
+};
 
-// const CarName = car => {
-// 	return (
-// 		<p
-// 			style={{
-// 				marginTop: '0',
-// 				marginBottom: '16px',
-// 				fontSize: '40px',
-// 				fontWeight: 'bold',
-// 			}}>{`${car.brand} ${car.model}`}</p>
-// 	);
-// };
+const Wrapper = props => {
+	return (
+		<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+			{props.children}
+		</div>
+	);
+};
 
-// const CarImg = url => {
-// 	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
-// };
+const CarCard = props => {
+	return (
+		<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>
+			{props.children}
+		</div>
+	);
+};
+
+const CarName = props => {
+	return (
+		<p
+			style={{
+				marginTop: '0',
+				marginBottom: '16px',
+				fontSize: '40px',
+				fontWeight: 'bold',
+			}}>{`${props.brand} ${props.model}`}</p>
+	);
+};
+
+const CarCardRow = props => {
+	return <div style={{ display: 'flex' }}>{props.children}</div>;
+};
+
+const CarImg = props => {
+	return <img src={props.url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
+};
+
+const CarInfoColumn = props => {
+	return (
+		<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>
+			{props.children}
+		</div>
+	);
+};
+
+const CarInfoBox = props => {
+	return <div style={{ marginBottom: '24px' }}>{props.children}</div>;
+};
 
 const CarInfoTitle = props => {
 	return (
@@ -167,33 +199,18 @@ const CarInfo = props => {
 	return <p style={{ margin: '0', fontSize: '16px' }}>{props.info}</p>;
 };
 
-const CarInfoBox = props => {
-	return <div style={{ marginBottom: '24px' }}>{props.children}</div>;
-};
-
 const App = () => {
 	return (
 		<div>
-			<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
-				Segment C Hatchback cars (late 1990's, early 2000's)
-			</p>
-			<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+			<Title />
+			<Wrapper>
 				{cars.map(car => {
 					return (
-						<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>
-							<p
-								style={{
-									marginTop: '0',
-									marginBottom: '16px',
-									fontSize: '40px',
-									fontWeight: 'bold',
-								}}>{`${car.brand} ${car.model}`}</p>
-							<div style={{ display: 'flex' }}>
-								<img
-									src={car.imgUrl}
-									style={{ width: '320px', height: '240px', objectFit: 'cover' }}
-								/>
-								<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>
+						<CarCard>
+							<CarName brand={car.brand} model={car.model} />
+							<CarCardRow>
+								<CarImg url={car.imgUrl} />
+								<CarInfoColumn>
 									<CarInfoBox>
 										<CarInfoTitle title={'Generation'} />
 										<CarInfo info={car.generation} />
@@ -206,12 +223,12 @@ const App = () => {
 										<CarInfoTitle title={'Facelift'} />
 										<CarInfo info={car.facelift} />
 									</CarInfoBox>
-								</div>
-							</div>
-						</div>
+								</CarInfoColumn>
+							</CarCardRow>
+						</CarCard>
 					);
 				})}
-			</div>
+			</Wrapper>
 		</div>
 	);
 };
