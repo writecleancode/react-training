@@ -131,67 +131,49 @@ const cars = [
 
 const AppContainer = document.querySelector('#root');
 
-const Title = () => {
-	return (
-		<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
-			Segment C Hatchback cars (late 1990's, early 2000's)
-		</p>
-	);
-};
+const Title = () => (
+	<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
+		Segment C Hatchback cars (late 1990's, early 2000's)
+	</p>
+);
 
-const Wrapper = ({ children }) => {
-	return (
-		<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>{children}</div>
-	);
-};
+const Wrapper = ({ children }) => (
+	<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>{children}</div>
+);
 
-const CarCard = ({ children }) => {
-	return (
-		<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>{children}</div>
-	);
-};
+const CarCard = ({ children }) => (
+	<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>{children}</div>
+);
 
-const CarName = ({ brand, model }) => {
-	return (
-		<p
-			style={{
-				marginTop: '0',
-				marginBottom: '16px',
-				fontSize: '40px',
-				fontWeight: 'bold',
-			}}>{`${brand} ${model}`}</p>
-	);
-};
+const CarName = ({ brand, model }) => (
+	<p
+		style={{
+			marginTop: '0',
+			marginBottom: '16px',
+			fontSize: '40px',
+			fontWeight: 'bold',
+		}}>{`${brand} ${model}`}</p>
+);
 
-const CarCardRow = ({ children }) => {
-	return <div style={{ display: 'flex' }}>{children}</div>;
-};
+const CarCardRow = ({ children }) => <div style={{ display: 'flex' }}>{children}</div>;
 
-const CarImg = ({ url }) => {
-	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
-};
+const CarImg = ({ url }) => (
+	<img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />
+);
 
-const CarInfoColumn = ({ children }) => {
-	return (
-		<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>{children}</div>
-	);
-};
+const CarInfoColumn = ({ children }) => (
+	<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>{children}</div>
+);
 
-const CarInfoBox = ({ children }) => {
-	return <div style={{ marginBottom: '24px' }}>{children}</div>;
-};
+const CarInfoBox = ({ children }) => <div style={{ marginBottom: '24px' }}>{children}</div>;
 
-const CarInfoTitle = ({ title }) => {
-	return (
-		<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
-			{title}
-		</p>
-	);
-};
+const CarInfoTitle = ({ title }) => (
+	<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
+		{title}
+	</p>
+);
 
-const CarInfo = ({ info }) => {
-	return <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
-};
+const CarInfo = ({ info }) => <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
 
 const App = () => {
 	return (
