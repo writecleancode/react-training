@@ -139,23 +139,19 @@ const Title = () => {
 	);
 };
 
-const Wrapper = props => {
+const Wrapper = ({ children }) => {
 	return (
-		<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
-			{props.children}
-		</div>
+		<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>{children}</div>
 	);
 };
 
-const CarCard = props => {
+const CarCard = ({ children }) => {
 	return (
-		<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>
-			{props.children}
-		</div>
+		<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>{children}</div>
 	);
 };
 
-const CarName = props => {
+const CarName = ({ brand, model }) => {
 	return (
 		<p
 			style={{
@@ -163,40 +159,38 @@ const CarName = props => {
 				marginBottom: '16px',
 				fontSize: '40px',
 				fontWeight: 'bold',
-			}}>{`${props.brand} ${props.model}`}</p>
+			}}>{`${brand} ${model}`}</p>
 	);
 };
 
-const CarCardRow = props => {
-	return <div style={{ display: 'flex' }}>{props.children}</div>;
+const CarCardRow = ({ children }) => {
+	return <div style={{ display: 'flex' }}>{children}</div>;
 };
 
-const CarImg = props => {
-	return <img src={props.url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
+const CarImg = ({ url }) => {
+	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
 };
 
-const CarInfoColumn = props => {
+const CarInfoColumn = ({ children }) => {
 	return (
-		<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>
-			{props.children}
-		</div>
+		<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>{children}</div>
 	);
 };
 
-const CarInfoBox = props => {
-	return <div style={{ marginBottom: '24px' }}>{props.children}</div>;
+const CarInfoBox = ({ children }) => {
+	return <div style={{ marginBottom: '24px' }}>{children}</div>;
 };
 
-const CarInfoTitle = props => {
+const CarInfoTitle = ({ title }) => {
 	return (
 		<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
-			{props.title}
+			{title}
 		</p>
 	);
 };
 
-const CarInfo = props => {
-	return <p style={{ margin: '0', fontSize: '16px' }}>{props.info}</p>;
+const CarInfo = ({ info }) => {
+	return <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
 };
 
 const App = () => {
