@@ -131,93 +131,130 @@ const cars = [
 
 const AppContainer = document.querySelector('#root');
 
-const Title = () => {
-	return (
-		<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>Segment C Hatchback cars (late 1990's, early 2000's)</p>
-	);
-};
+// const Title = () => {
+// 	return (
+// 		<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
+// 			Segment C Hatchback cars (late 1990's, early 2000's)
+// 		</p>
+// 	);
+// };
 
-const CarName = car => {
-	return <p style={{ marginTop: '0', marginBottom: '16px', fontSize: '40px', fontWeight: 'bold' }}>{`${car.brand} ${car.model}`}</p>;
-};
+// const CarName = car => {
+// 	return (
+// 		<p
+// 			style={{
+// 				marginTop: '0',
+// 				marginBottom: '16px',
+// 				fontSize: '40px',
+// 				fontWeight: 'bold',
+// 			}}>{`${car.brand} ${car.model}`}</p>
+// 	);
+// };
 
-const CarImg = url => {
-	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
-};
+// const CarImg = url => {
+// 	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
+// };
 
-const CarInfoTitle = title => {
-	return <p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>{title}</p>;
-};
+// const CarInfoTitle = title => {
+// 	return (
+// 		<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
+// 			{title}
+// 		</p>
+// 	);
+// };
 
-const CarInfo = info => {
-	return <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
-};
+// const CarInfo = info => {
+// 	return <p style={{ margin: '0', fontSize: '16px' }}>{info}</p>;
+// };
 
-const CarInfoBox = (title, info) => {
-	return (
-		<div style={{ marginBottom: '24px' }}>
-			{CarInfoTitle(title)}
-			{CarInfo(info)}
-		</div>
-	);
-};
+// const CarInfoBox = (title, info) => {
+// 	return (
+// 		<div style={{ marginBottom: '24px' }}>
+// 			{CarInfoTitle(title)}
+// 			{CarInfo(info)}
+// 		</div>
+// 	);
+// };
 
 const App = () => {
-	return React.createElement(
-		'div',
-		{},
-		Title(),
-		React.createElement(
-			'div',
-			{
-				style: {
-					display: 'flex',
-					justifyContent: 'center',
-					flexWrap: 'wrap',
-				},
-			},
-			cars.map(car => {
-				return React.createElement(
-					'div',
-					{
-						style: {
-							margin: '16px',
-							padding: '16px',
-							backgroundColor: '#D9D9D9',
-						},
-					},
-					CarName(car),
-					React.createElement(
-						'div',
-						{
-							style: {
-								display: 'flex',
-							},
-						},
-						CarImg(car.imgUrl),
-						React.createElement(
-							'div',
-							{
-								style: {
-									display: 'flex',
-									flexDirection: 'column',
-									marginLeft: '16px',
-								},
-							},
-							CarInfoBox('Generation', car.generation),
-							CarInfoBox(
-								'Production years',
-								`${car.productionStartYear} - ${car.productionEndYear}`
-							),
-							CarInfoBox('Facelift', car.facelift)
-						)
-					)
-				);
-			})
-		)
+	return (
+		<div>
+			<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
+				Segment C Hatchback cars (late 1990's, early 2000's)
+			</p>
+			<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+				{cars.map(car => {
+					return (
+						<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>
+							<p
+								style={{
+									marginTop: '0',
+									marginBottom: '16px',
+									fontSize: '40px',
+									fontWeight: 'bold',
+								}}>{`${car.brand} ${car.model}`}</p>
+							<div style={{ display: 'flex' }}>
+								<img
+									src={car.imgUrl}
+									style={{ width: '320px', height: '240px', objectFit: 'cover' }}
+								/>
+								<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>
+									<div style={{ marginBottom: '24px' }}>
+										<p
+											style={{
+												marginTop: '0',
+												marginBottom: '8px',
+												fontSize: '20px',
+												fontWeight: 'bold',
+											}}>
+											Generation
+										</p>
+										<p
+											style={{
+												margin: '0',
+												fontSize: '16px',
+											}}>
+											{car.generation}
+										</p>
+									</div>
+									<div style={{ marginBottom: '24px' }}>
+										<p
+											style={{
+												marginTop: '0',
+												marginBottom: '8px',
+												fontSize: '20px',
+												fontWeight: 'bold',
+											}}>
+											Production years
+										</p>
+										<p
+											style={{
+												margin: '0',
+												fontSize: '16px',
+											}}>{`${car.productionStartYear} - ${car.productionEndYear}`}</p>
+									</div>
+									<div style={{ marginBottom: '24px' }}>
+										<p
+											style={{
+												marginTop: '0',
+												marginBottom: '8px',
+												fontSize: '20px',
+												fontWeight: 'bold',
+											}}>
+											Facelift
+										</p>
+										<p style={{ margin: '0', fontSize: '16px' }}>{car.facelift}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</div>
 	);
 };
 
 const root = ReactDOM.createRoot(AppContainer);
 
-root.render(App());
+root.render(<App />);
