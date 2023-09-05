@@ -131,21 +131,22 @@ const cars = [
 
 const AppContainer = document.querySelector('#root');
 
-const H1 = () => {
+const Title = () => {
 	return (
-		<h1 style={{ textAlign: 'center' }}>Segment C Hatchback cars (late 1990's, early 2000's)</h1>
+		<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>Segment C Hatchback cars (late 1990's, early 2000's)</p>
 	);
 };
 
+const CarName = car => {
+	return <p style={{ marginTop: '0', marginBottom: '16px', fontSize: '40px', fontWeight: 'bold' }}>{`${car.brand} ${car.model}`}</p>;
+};
+
 const CarImg = url => {
-	return React.createElement('img', {
-		src: url,
-		style: { width: '320px', height: '240px', objectFit: 'cover' },
-	});
+	return <img src={url} style={{ width: '320px', height: '240px', objectFit: 'cover' }} />;
 };
 
 const CarInfoTitle = title => {
-	return <h6 style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px' }}>{title}</h6>;
+	return <p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>{title}</p>;
 };
 
 const CarInfo = info => {
@@ -153,15 +154,11 @@ const CarInfo = info => {
 };
 
 const CarInfoBox = (title, info) => {
-	return React.createElement(
-		'div',
-		{
-			style: {
-				marginBottom: '24px',
-			},
-		},
-		CarInfoTitle(title),
-		CarInfo(info)
+	return (
+		<div style={{ marginBottom: '24px' }}>
+			{CarInfoTitle(title)}
+			{CarInfo(info)}
+		</div>
 	);
 };
 
@@ -169,7 +166,7 @@ const App = () => {
 	return React.createElement(
 		'div',
 		{},
-		H1(),
+		Title(),
 		React.createElement(
 			'div',
 			{
@@ -189,17 +186,7 @@ const App = () => {
 							backgroundColor: '#D9D9D9',
 						},
 					},
-					React.createElement(
-						'h4',
-						{
-							style: {
-								marginTop: '0',
-								marginBottom: '16px',
-								fontSize: '40px',
-							},
-						},
-						`${car.brand} ${car.model}`
-					),
+					CarName(car),
 					React.createElement(
 						'div',
 						{
