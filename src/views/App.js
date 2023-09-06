@@ -49,24 +49,24 @@ const App = () => {
 		<div>
 			<Title />
 			<Wrapper>
-				{cars.map(car => {
+				{cars.map(({ brand, model, imgUrl, generation, productionStartYear, productionEndYear, facelift }) => {
 					return (
-						<CarCard key={car.brand}>
-							<CarName brand={car.brand} model={car.model} />
+						<CarCard key={brand}>
+							<CarName brand={brand} model={model} />
 							<CarCardRow>
-								<CarImg url={car.imgUrl} />
+								<CarImg url={imgUrl} />
 								<CarInfoColumn>
 									<CarInfoBox>
 										<CarInfoTitle title={'Generation'} />
-										<CarInfo info={car.generation} />
+										<CarInfo info={generation} />
 									</CarInfoBox>
 									<CarInfoBox>
 										<CarInfoTitle title={'Production years'} />
-										<CarInfo info={`${car.productionStartYear} - ${car.productionEndYear}`} />
+										<CarInfo info={`${productionStartYear} - ${productionEndYear}`} />
 									</CarInfoBox>
 									<CarInfoBox>
 										<CarInfoTitle title={'Facelift'} />
-										<CarInfo info={car.facelift} />
+										<CarInfo info={facelift} />
 									</CarInfoBox>
 								</CarInfoColumn>
 							</CarCardRow>
