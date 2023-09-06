@@ -7,24 +7,23 @@ const Title = () => (
 );
 
 const Wrapper = ({ children }) => (
-	<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>{children}</div>
+	<div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr' }}>{children}</div>
 );
 
 const CarCard = ({ children }) => (
-	<div style={{ margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>{children}</div>
+	<div style={{ display: 'grid', gridTemplateRows: '1fr 240px', gridTemplateColumns: '320px 1ft', margin: '16px', padding: '16px', backgroundColor: '#D9D9D9' }}>{children}</div>
 );
 
 const CarName = ({ brand, model }) => (
 	<p
 		style={{
+			gridColumn: '1 / 3',
 			marginTop: '0',
 			marginBottom: '16px',
 			fontSize: '40px',
 			fontWeight: 'bold',
 		}}>{`${brand} ${model}`}</p>
 );
-
-const CarCardRow = ({ children }) => <div style={{ display: 'flex' }}>{children}</div>;
 
 const CarImg = ({ url }) => (
 	<img src={url} alt='car' style={{ width: '320px', height: '240px', objectFit: 'cover' }} />
@@ -53,23 +52,21 @@ const App = () => {
 					return (
 						<CarCard key={brand}>
 							<CarName brand={brand} model={model} />
-							<CarCardRow>
-								<CarImg url={imgUrl} />
-								<CarInfoColumn>
-									<CarInfoBox>
-										<CarInfoTitle title={'Generation'} />
-										<CarInfo info={generation} />
-									</CarInfoBox>
-									<CarInfoBox>
-										<CarInfoTitle title={'Production years'} />
-										<CarInfo info={`${productionStartYear} - ${productionEndYear}`} />
-									</CarInfoBox>
-									<CarInfoBox>
-										<CarInfoTitle title={'Facelift'} />
-										<CarInfo info={facelift} />
-									</CarInfoBox>
-								</CarInfoColumn>
-							</CarCardRow>
+							<CarImg url={imgUrl} />
+							<CarInfoColumn>
+								<CarInfoBox>
+									<CarInfoTitle title={'Generation'} />
+									<CarInfo info={generation} />
+								</CarInfoBox>
+								<CarInfoBox>
+									<CarInfoTitle title={'Production years'} />
+									<CarInfo info={`${productionStartYear} - ${productionEndYear}`} />
+								</CarInfoBox>
+								<CarInfoBox>
+									<CarInfoTitle title={'Facelift'} />
+									<CarInfo info={facelift} />
+								</CarInfoBox>
+							</CarInfoColumn>
 						</CarCard>
 					);
 				})}
