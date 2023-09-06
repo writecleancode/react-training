@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 export const CarName = ({ brand, model }) => (
 	<p
 		style={{
@@ -8,3 +10,8 @@ export const CarName = ({ brand, model }) => (
 			fontWeight: 'bold',
 		}}>{`${brand} ${model}`}</p>
 );
+
+CarName.propTypes = {
+	brand: PropTypes.string.isRequired,
+	model: PropTypes.string.isRequired,
+};

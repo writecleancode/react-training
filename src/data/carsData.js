@@ -76,7 +76,7 @@ export const cars = [
 		model: 'Astra',
 		generation: 'II (G)',
 		productionStartYear: 1998,
-		productionEndYear: '2009',
+		productionEndYear: 2009,
 		facelift: '-',
 		imgUrl: './img/opel_astra_ii.jpg',
 	},

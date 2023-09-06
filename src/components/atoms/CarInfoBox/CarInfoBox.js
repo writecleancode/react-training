@@ -1,3 +1,5 @@
+import { PropTypes } from 'prop-types';
+
 const CarInfoTitle = ({ children }) => (
 	<p style={{ marginTop: '0', marginBottom: '8px', fontSize: '20px', fontWeight: 'bold' }}>
 		{children}
@@ -12,3 +14,8 @@ export const CarInfoBox = ({ title, info }) => (
 		<CarInfo>{info}</CarInfo>
 	</div>
 );
+
+CarInfoBox.propTypes = {
+	title: PropTypes.string.isRequired,
+	info: PropTypes.string.isRequired,
+};

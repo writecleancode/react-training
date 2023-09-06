@@ -1,6 +1,7 @@
-import { CarImg } from "components/atoms/CarImg/CarImg";
-import { CarInfoBox } from "components/atoms/CarInfoBox/CarInfoBox";
-import { CarName } from "components/atoms/CarName/CarName";
+import { PropTypes } from 'prop-types';
+import { CarImg } from 'components/atoms/CarImg/CarImg';
+import { CarInfoBox } from 'components/atoms/CarInfoBox/CarInfoBox';
+import { CarName } from 'components/atoms/CarName/CarName';
 
 const CarInfoColumn = ({ children }) => (
 	<div style={{ display: 'flex', flexDirection: 'column', marginLeft: '16px' }}>{children}</div>
@@ -23,9 +24,24 @@ export const CarCard = ({
 			<CarImg url={imgUrl} />
 			<CarInfoColumn>
 				<CarInfoBox title={'Generation'} info={generation} />
-				<CarInfoBox title={'Production years'} info={`${productionStartYear} - ${productionEndYear}`} />
+				<CarInfoBox
+					title={'Production years'}
+					info={`${productionStartYear} - ${productionEndYear}`}
+				/>
 				<CarInfoBox title={'Facelift'} info={facelift} />
 			</CarInfoColumn>
 		</div>
 	);
+};
+
+CarCard.propTypes = {
+	car: PropTypes.shape({
+		brand: PropTypes.string.isRequired,
+		model: PropTypes.string.isRequired,
+		imgUrl: PropTypes.string,
+		generation: PropTypes.string.isRequired,
+		productionStartYear: PropTypes.number.isRequired,
+		productionEndYear: PropTypes.number.isRequired,
+		facelift: PropTypes.string.isRequired,
+	}),
 };
