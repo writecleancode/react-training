@@ -1,4 +1,4 @@
-import { cars } from 'assets/carsData';
+import { cars } from 'data/carsData';
 
 const Title = () => (
 	<p style={{ margin: '22px 0', fontSize: '32px', fontWeight: 'bold', textAlign: 'center' }}>
