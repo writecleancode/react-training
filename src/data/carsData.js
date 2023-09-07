@@ -29,7 +29,7 @@ export const cars = [
 	{
 		brand: 'Fiat',
 		model: 'Brava',
-		generation: 'I',
+		generation: 'I (Type 182)',
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
@@ -38,7 +38,7 @@ export const cars = [
 	{
 		brand: 'Ford',
 		model: 'Focus',
-		generation: 'I',
+		generation: 'I (C170)',
 		productionStartYear: 1998,
 		productionEndYear: 2005,
 		facelift: '2001',
@@ -92,7 +92,7 @@ export const cars = [
 	{
 		brand: 'Renault',
 		model: 'Megane',
-		generation: 'I',
+		generation: 'I (X64)',
 		productionStartYear: 1995,
 		productionEndYear: 2003,
 		facelift: '1999',
@@ -101,7 +101,7 @@ export const cars = [
 	{
 		brand: 'Seat',
 		model: 'Leon',
-		generation: 'I',
+		generation: 'I (1M)',
 		productionStartYear: 1999,
 		productionEndYear: 2005,
 		facelift: '-',
@@ -110,7 +110,7 @@ export const cars = [
 	{
 		brand: 'Toyota',
 		model: 'Corolla',
-		generation: 'VIII',
+		generation: 'VIII (E110)',
 		productionStartYear: 1997,
 		productionEndYear: 2002,
 		facelift: '1999',
