@@ -2,14 +2,23 @@ import { PropTypes } from 'prop-types';
 import { CarName } from 'src/components/atoms/CarName/CarName';
 import { CarImg } from 'src/components/atoms/CarImg/CarImg';
 import { CarInfoBox } from 'src/components/atoms/CarInfoBox/CarInfoBox';
-import { CarInfoWrapper, Wrapper } from './CarCards.styles';
+import { CarInfoWrapper, CarTitleWrapper, Wrapper } from './CarCards.styles';
+import { DeleteButton } from 'src/components/atoms/DeleteButton/DeleteButton';
 
 export const CarCard = ({
+	deleteCar,
 	car: { brand, model, imgUrl, generation, productionStartYear, productionEndYear, facelift },
 }) => {
 	return (
 		<Wrapper>
-			<CarName>{`${brand} ${model}`}</CarName>
+			<CarTitleWrapper>
+				<CarName>{`${brand} ${model}`}</CarName>
+				<DeleteButton
+					onClick={() => {
+						deleteCar(brand);
+					}}
+				/>
+			</CarTitleWrapper>
 			<CarImg src={imgUrl} alt={`${brand} ${model} ${generation}`} />
 			<CarInfoWrapper>
 				<CarInfoBox title={'Generation'} info={generation} />
@@ -21,6 +30,7 @@ export const CarCard = ({
 };
 
 CarCard.propTypes = {
+	deleteCar: PropTypes.func,
 	car: PropTypes.shape({
 		brand: PropTypes.string.isRequired,
 		model: PropTypes.string.isRequired,

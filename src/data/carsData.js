@@ -1,5 +1,14 @@
 export const cars = [
 	{
+		brand: 'Alfa Romeo',
+		model: '146',
+		generation: 'I (Type 930B)',
+		productionStartYear: 1994,
+		productionEndYear: 2000,
+		facelift: '1999',
+		imgUrl: 'src/data/img/alfa_romeo_146_i.jpg',
+	},
+	{
 		brand: 'Audi',
 		model: 'A3',
 		generation: 'I (8L)',
