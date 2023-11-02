@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
-import { CarImg } from 'components/atoms/CarImg/CarImg';
-import { CarInfoBox } from 'components/atoms/CarInfoBox/CarInfoBox';
-import { CarName } from 'components/atoms/CarName/CarName';
+import { CarName } from 'src/components/atoms/CarName/CarName';
+import { CarImg } from 'src/components/atoms/CarImg/CarImg';
+import { CarInfoBox } from 'src/components/atoms/CarInfoBox/CarInfoBox';
 import { CarInfoWrapper, Wrapper } from './CarCards.styles';
 
 export const CarCard = ({
@@ -13,10 +13,7 @@ export const CarCard = ({
 			<CarImg src={imgUrl} alt={`${brand} ${model} ${generation}`} />
 			<CarInfoWrapper>
 				<CarInfoBox title={'Generation'} info={generation} />
-				<CarInfoBox
-					title={'Production years'}
-					info={`${productionStartYear} - ${productionEndYear}`}
-				/>
+				<CarInfoBox title={'Production years'} info={`${productionStartYear} - ${productionEndYear}`} />
 				<CarInfoBox title={'Facelift'} info={facelift} />
 			</CarInfoWrapper>
 		</Wrapper>

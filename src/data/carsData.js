@@ -6,7 +6,7 @@ export const cars = [
 		productionStartYear: 1996,
 		productionEndYear: 2003,
 		facelift: '2000',
-		imgUrl: './img/audi_a3_i.jpg',
+		imgUrl: 'src/data/img/audi_a3_i.jpg',
 	},
 	{
 		brand: 'BMW',
@@ -15,7 +15,7 @@ export const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 2000,
 		facelift: '-',
-		imgUrl: './img/bmw_3_compact_i.jpg',
+		imgUrl: 'src/data/img/bmw_3_compact_i.jpg',
 	},
 	{
 		brand: 'Citroen',
@@ -24,7 +24,7 @@ export const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2005,
 		facelift: '2000',
-		imgUrl: './img/citroen_xsara_i.jpg',
+		imgUrl: 'src/data/img/citroen_xsara_i.jpg',
 	},
 	{
 		brand: 'Fiat',
@@ -33,7 +33,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
-		imgUrl: './img/fiat_brava_i.jpg',
+		imgUrl: 'src/data/img/fiat_brava_i.jpg',
 	},
 	{
 		brand: 'Ford',
@@ -42,7 +42,7 @@ export const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2005,
 		facelift: '2001',
-		imgUrl: './img/ford_focus_i.jpg',
+		imgUrl: 'src/data/img/ford_focus_i.jpg',
 	},
 	{
 		brand: 'Honda',
@@ -51,7 +51,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
-		imgUrl: './img/honda_civic_vi.jpg',
+		imgUrl: 'src/data/img/honda_civic_vi.jpg',
 	},
 	{
 		brand: 'Mazda',
@@ -60,7 +60,7 @@ export const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2003,
 		facelift: '2001',
-		imgUrl: './img/mazda_323_vi.jpg',
+		imgUrl: 'src/data/img/mazda_323_vi.jpg',
 	},
 	{
 		brand: 'Nissan',
@@ -69,7 +69,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2000,
 		facelift: '1998',
-		imgUrl: './img/nissan_almera_i.jpg',
+		imgUrl: 'src/data/img/nissan_almera_i.jpg',
 	},
 	{
 		brand: 'Opel',
@@ -78,7 +78,7 @@ export const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2009,
 		facelift: '-',
-		imgUrl: './img/opel_astra_ii.jpg',
+		imgUrl: 'src/data/img/opel_astra_ii.jpg',
 	},
 	{
 		brand: 'Peugeot',
@@ -87,7 +87,7 @@ export const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 2002,
 		facelift: '1997, 1999',
-		imgUrl: './img/peugeot_306_i.jpg',
+		imgUrl: 'src/data/img/peugeot_306_i.jpg',
 	},
 	{
 		brand: 'Renault',
@@ -96,7 +96,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2003,
 		facelift: '1999',
-		imgUrl: './img/renault_megane_i.jpg',
+		imgUrl: 'src/data/img/renault_megane_i.jpg',
 	},
 	{
 		brand: 'Seat',
@@ -105,7 +105,7 @@ export const cars = [
 		productionStartYear: 1999,
 		productionEndYear: 2005,
 		facelift: '-',
-		imgUrl: './img/seat_leon_i.jpg',
+		imgUrl: 'src/data/img/seat_leon_i.jpg',
 	},
 	{
 		brand: 'Toyota',
@@ -114,7 +114,7 @@ export const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2002,
 		facelift: '1999',
-		imgUrl: './img/toyota_corolla_viii.jpg',
+		imgUrl: 'src/data/img/toyota_corolla_viii.jpg',
 	},
 	{
 		brand: 'Volkswagen',
@@ -123,6 +123,6 @@ export const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2003,
 		facelift: '-',
-		imgUrl: './img/volkswagen_golf_iv.jpg',
+		imgUrl: 'src/data/img/volkswagen_golf_iv.jpg',
 	},
 ];

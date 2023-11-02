@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const CarName = styled.p`
 	grid-column: 1 / 3;
