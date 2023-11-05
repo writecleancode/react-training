@@ -12,14 +12,15 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         font-family: 'Montserrat', sans-serif;
     }
 
-    a, button {
+    a, button, select {
         font-family: inherit;
         cursor: pointer;
+    }
+
+    input {
+        font-family: inherit;
     }
 `;

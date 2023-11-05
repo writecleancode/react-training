@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledTitle = styled.p`
-	margin: 22px 0;
-	font-size: 3.2rem;
+	margin-bottom: ${({ $isFilterTitle }) => ($isFilterTitle ? '1.6rem' : '0.8rem')};
+	color: #3e3e3e;
+	font-size: 2rem;
 	font-weight: bold;
-	text-align: center;
+	line-height: ${({ $isFilterTitle }) => ($isFilterTitle ? '150%' : '100%')};
 `;

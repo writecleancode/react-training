@@ -1,31 +1,27 @@
 import { useEffect, useState } from 'react';
-import { GlobalStyle } from 'src/assets/styles/GlobalStyle';
-import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
-import { Wrapper } from './Root.styles';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { cars as carsData } from 'src/data/carsData';
-import { CarCard } from 'src/components/molecules/CarCard/CarCard';
+import { GlobalStyle } from 'src/assets/styles/GlobalStyle';
+import { MainTemplate } from 'src/components/templates/MainTemplate';
+import { Dashboard } from './Dashboard';
+import { AddCar } from './AddCar';
 
 export const Root = () => {
 	const [cars, setCars] = useState([]);
 
 	useEffect(() => {
 		setCars(carsData);
-	}, []);
-
-	const deleteCar = (brand) => {
-		const filteredCars = cars.filter(car => car.brand !== brand)
-		setCars(filteredCars);
-	}
+	}, [carsData]);
 
 	return (
-		<>
+		<Router>
 			<GlobalStyle />
-			<StyledTitle>Segment C Hatchback cars (late 1990's, early 2000's)</StyledTitle>
-			<Wrapper>
-				{cars.map(car => (
-					<CarCard key={car.brand} car={car} deleteCar={deleteCar} />
-				))}
-			</Wrapper>
-		</>
+			<MainTemplate>
+				<Routes>
+					<Route path='/' element={<Dashboard cars={cars} />} />
+					<Route path='/add-car' element={<AddCar />} />
+				</Routes>
+			</MainTemplate>
+		</Router>
 	);
 };

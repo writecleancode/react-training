@@ -2,7 +2,7 @@ export const cars = [
 	{
 		brand: 'Alfa Romeo',
 		model: '146',
-		generation: 'I (Type 930B)',
+		generation: 'I (Type 930)',
 		productionStartYear: 1994,
 		productionEndYear: 2000,
 		facelift: '1999',
@@ -29,7 +29,7 @@ export const cars = [
 	{
 		brand: 'Citroen',
 		model: 'Xsara',
-		generation: 'I',
+		generation: 'I (N1)',
 		productionStartYear: 1997,
 		productionEndYear: 2005,
 		facelift: '2000',
@@ -92,7 +92,7 @@ export const cars = [
 	{
 		brand: 'Peugeot',
 		model: '306',
-		generation: 'I',
+		generation: 'I (7A/C)',
 		productionStartYear: 1993,
 		productionEndYear: 2002,
 		facelift: '1997, 1999',
@@ -101,7 +101,7 @@ export const cars = [
 	{
 		brand: 'Renault',
 		model: 'Megane',
-		generation: 'I (X64)',
+		generation: 'I (BA)',
 		productionStartYear: 1995,
 		productionEndYear: 2003,
 		facelift: '1999',

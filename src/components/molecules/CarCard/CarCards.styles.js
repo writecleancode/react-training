@@ -1,23 +1,17 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-	display: grid;
-	grid-template-rows: 1fr 240px;
-	grid-template-columns: 320px 1fr;
-	margin: 16px;
+	display: flex;
+	flex-direction: column;
 	padding: 16px;
-	background-color: #d9d9d9;
+	border: 1px solid #dddddd;
+	background-color: #f1f1f1;
+	color: #3e3e3e;
+	box-shadow: 0 0 16px rgba(0, 0, 0, 0.2);
 `;
 
 export const CarInfoWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-left: 16px;
-`;
-
-export const CarTitleWrapper = styled.div`
-	grid-column: 1 / 3;
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
+	margin-top: 1.6rem;
 `;
