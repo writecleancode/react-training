@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { CarsContext } from 'src/providers/CarsProvider';
 import { PropTypes } from 'prop-types';
 import { CarName } from 'src/components/atoms/CarName/CarName';
 import { CarImg } from 'src/components/atoms/CarImg/CarImg';
@@ -6,10 +8,11 @@ import { TrashIcon } from 'src/assets/icons/TrashIcon';
 import { CarInfoWrapper, DeleteButton, Wrapper } from './CarCards.styles';
 
 export const CarCard = ({
-	handleRemoveCar,
 	$isPreviewCard,
 	car: { brand, model, imgUrl, generation, productionStartYear, productionEndYear, facelift },
 }) => {
+	const { handleRemoveCar } = useContext(CarsContext);
+
 	return (
 		<Wrapper>
 			<CarName>{`${brand} ${model}`}</CarName>
@@ -29,7 +32,7 @@ export const CarCard = ({
 };
 
 CarCard.propTypes = {
-	handleRemoveCar: PropTypes.func,
+	$isPreviewCard: PropTypes.bool,
 	car: PropTypes.shape({
 		brand: PropTypes.string.isRequired,
 		model: PropTypes.string.isRequired,
