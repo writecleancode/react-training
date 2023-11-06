@@ -5,7 +5,7 @@ import { SearchInput } from 'src/components/atoms/SearchInput/SearchInput';
 import { SortSelect } from 'src/components/atoms/SortSelect/SortSelect';
 import { CarsWrapper, SearchWrapper, Wrapper } from './Dashboard.styles';
 
-export const Dashboard = ({ cars }) => {
+export const Dashboard = ({ cars, handleRemoveCar }) => {
 	return (
 		<Wrapper>
 			<SearchWrapper>
@@ -14,7 +14,7 @@ export const Dashboard = ({ cars }) => {
 			</SearchWrapper>
 			<CarsWrapper>
 				{cars.map(car => (
-					<CarCard key={car.brand} car={car} />
+					<CarCard key={car.brand + car.model} car={car} handleRemoveCar={handleRemoveCar} />
 				))}
 			</CarsWrapper>
 		</Wrapper>
@@ -22,5 +22,6 @@ export const Dashboard = ({ cars }) => {
 };
 
 Dashboard.propTypes = {
+	handleRemoveCar: PropTypes.func,
 	cars: PropTypes.array,
 };

@@ -2,22 +2,17 @@ import { Form } from 'src/components/organisms/Form/Form';
 import { CarCard } from 'src/components/molecules/CarCard/CarCard';
 import { PreviewTitle, PreviewWrapper, Wrapper } from './AddCar.styles';
 
-export const AddCar = () => {
+export const AddCar = ({ formValues, handleInputChange, handleAddCar }) => {
 	return (
 		<Wrapper>
-			<Form />
+			<Form formValues={formValues} handleInputChange={handleInputChange} handleAddCar={handleAddCar} />
 			<PreviewWrapper>
 				<PreviewTitle>Live preview</PreviewTitle>
 				<CarCard
 					car={{
-						brand: 'Alfa Romeo',
-						model: '146',
-						generation: 'I (Type 930)',
-						productionStartYear: 1994,
-						productionEndYear: 2000,
-						facelift: '1999',
-						imgUrl: 'src/data/img/alfa_romeo_146_i.jpg',
-					}}
+						...formValues,
+						imgUrl: `src/data/img/${formValues.imgUrl}`,
+					}} $isPreviewCard
 				/>
 			</PreviewWrapper>
 		</Wrapper>
