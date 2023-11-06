@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CarsContext } from 'src/providers/CarsProvider';
 import { selectOptions } from 'src/data/FilterData';
 import { CarCard } from 'src/components/molecules/CarCard/CarCard';
@@ -7,12 +7,17 @@ import { SortSelect } from 'src/components/atoms/SortSelect/SortSelect';
 import { CarsWrapper, SearchWrapper, Wrapper } from './Dashboard.styles';
 
 export const Dashboard = () => {
-	const { cars } = useContext(CarsContext);
+	const { cars, handleSearchCars } = useContext(CarsContext);
+	const [searchPhrase, setSearchPhrase] = useState('');
+
+	useEffect(() => {
+		handleSearchCars(searchPhrase);
+	}, [searchPhrase]);
 
 	return (
 		<Wrapper>
 			<SearchWrapper>
-				<SearchInput />
+				<SearchInput value={searchPhrase} onChange={e => setSearchPhrase(e.target.value)} />
 				<SortSelect options={selectOptions} />
 			</SearchWrapper>
 			<CarsWrapper>

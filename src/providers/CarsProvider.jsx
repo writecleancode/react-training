@@ -17,6 +17,7 @@ export const CarsContext = createContext({
 	handleInputChange: () => {},
 	handleAddCar: () => {},
 	handleRemoveCar: () => {},
+	handleSearchCars: () => {},
 	handleSortCars: () => {},
 });
 
@@ -57,6 +58,19 @@ export const CarsProvider = ({ children }) => {
 			return car.brand !== brand && car.model !== model && car.generation !== generation;
 		});
 		setCars(filteredCars);
+	};
+
+	const handleSearchCars = searchPhrase => {
+		if (!searchPhrase) {
+			setCars(carsData);
+			return;
+		}
+
+		const matchingCars = carsData.filter(car => {
+			const carName = `${car.brand} ${car.model}`;
+			return carName.toLowerCase().includes(searchPhrase.toLowerCase());
+		});
+		setCars(matchingCars);
 	};
 
 	const setSortVariables = (selectedValue, a, b) => {
@@ -105,6 +119,7 @@ export const CarsProvider = ({ children }) => {
 				handleInputChange: handleInputChange,
 				handleAddCar: handleAddCar,
 				handleRemoveCar: handleRemoveCar,
+				handleSearchCars: handleSearchCars,
 				handleSortCars: handleSortCars,
 			}}>
 			{children}
