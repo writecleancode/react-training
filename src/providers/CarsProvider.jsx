@@ -1,14 +1,18 @@
 import { createContext, useEffect, useState } from 'react';
-import { cars as carsData } from 'src/data/carsData';
+import { cars as primaryCarsData } from 'src/data/cars';
+
+let carsData = [...primaryCarsData];
+let valueA;
+let valueB;
 
 const initialFormValues = {
-	brand: 'Alfa Romeo',
-	model: '146',
-	generation: 'I (Type 930)',
-	productionStartYear: 1994,
-	productionEndYear: 2000,
+	brand: 'Daewoo',
+	model: 'Nubira',
+	generation: 'I (J100)',
+	productionStartYear: 1997,
+	productionEndYear: 2003,
 	facelift: '1999',
-	imgUrl: 'alfa_romeo_146_i.jpg',
+	imgUrl: 'daewoo_nubira_i.jpg',
 };
 
 export const CarsContext = createContext({
@@ -24,12 +28,10 @@ export const CarsContext = createContext({
 export const CarsProvider = ({ children }) => {
 	const [cars, setCars] = useState([]);
 	const [formValues, setFormValues] = useState(initialFormValues);
-	let valueA;
-	let valueB;
 
 	useEffect(() => {
-		setCars(carsData);
-	}, [carsData]);
+		setCars(primaryCarsData);
+	}, [primaryCarsData]);
 
 	const handleInputChange = e => {
 		if (e.target.name === 'productionStartYear' || e.target.name === 'productionEndYear') {
@@ -50,14 +52,16 @@ export const CarsProvider = ({ children }) => {
 			...formValues,
 			imgUrl: `src/data/img/${formValues.imgUrl}`,
 		};
-		setCars([newCar, ...cars]);
+		carsData = [newCar, ...cars];
+		setCars(carsData);
 	};
 
 	const handleRemoveCar = (brand, model, generation) => {
 		const filteredCars = cars.filter(car => {
 			return car.brand !== brand && car.model !== model && car.generation !== generation;
 		});
-		setCars(filteredCars);
+		carsData = filteredCars;
+		setCars(carsData);
 	};
 
 	const handleSearchCars = searchPhrase => {
@@ -99,7 +103,7 @@ export const CarsProvider = ({ children }) => {
 	const handleSortCars = selectedValue => {
 		if (!cars.length) return;
 
-		const sortedCars = cars.toSorted((a, b) => {
+		const sortedCars = carsData.toSorted((a, b) => {
 			setSortVariables(selectedValue, a, b);
 
 			if (valueA < valueB) return -1;
@@ -108,7 +112,8 @@ export const CarsProvider = ({ children }) => {
 			return 0;
 		});
 
-		setCars(sortedCars);
+		carsData = sortedCars
+		setCars(carsData);
 	};
 
 	return (

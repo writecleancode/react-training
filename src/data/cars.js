@@ -63,6 +63,15 @@ export const cars = [
 		imgUrl: 'src/data/img/honda_civic_vi.jpg',
 	},
 	{
+		brand: 'Lancia',
+		model: 'Delta',
+		generation: 'II',
+		productionStartYear: 1993,
+		productionEndYear: 1999,
+		facelift: '-',
+		imgUrl: 'src/data/img/lancia_delta_ii.jpg',
+	},
+	{
 		brand: 'Mazda',
 		model: '323',
 		generation: 'VI (BJ)',

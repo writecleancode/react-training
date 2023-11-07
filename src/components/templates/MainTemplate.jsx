@@ -1,5 +1,5 @@
 import { Header } from '../atoms/Header/Header';
-import { filterBrands, filterYears } from 'src/data/FilterData';
+import { filterBrands, filterYears } from 'src/data/filters';
 import { SideSection } from '../organisms/SideSection/SideSection';
 import { FilterBox } from '../molecules/FilterBox/FilterBox';
 import { NavBox } from '../molecules/NavBox/NavBox';
