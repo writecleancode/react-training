@@ -25,4 +25,8 @@ export const FilterItem = styled.li`
 	background-color: #d9d9d9;
 	font-size: 1.6rem;
 	cursor: pointer;
+
+	&.active {
+		background-color: #bdeeb1;
+	}
 `;

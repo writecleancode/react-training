@@ -9,14 +9,14 @@ export const Root = () => {
 	return (
 		<Router>
 			<GlobalStyle />
-			<MainTemplate>
-				<CarsProvider>
+			<CarsProvider>
+				<MainTemplate>
 					<Routes>
 						<Route path='/' element={<Dashboard />} />
 						<Route path='/add-car' element={<AddCar />} />
 					</Routes>
-				</CarsProvider>
-			</MainTemplate>
+				</MainTemplate>
+			</CarsProvider>
 		</Router>
 	);
 };

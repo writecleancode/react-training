@@ -4,6 +4,12 @@ import { cars as primaryCarsData } from 'src/data/cars';
 let carsData = [...primaryCarsData];
 let valueA;
 let valueB;
+let chosenFilters = {
+	productionYears: [],
+	brands: [],
+};
+let filterYearsOptions = [];
+let filterBrandsOptions = [];
 
 const initialFormValues = {
 	brand: 'Daewoo',
@@ -23,6 +29,7 @@ export const CarsContext = createContext({
 	handleRemoveCar: () => {},
 	handleSearchCars: () => {},
 	handleSortCars: () => {},
+	handleFilterCars: () => {},
 });
 
 export const CarsProvider = ({ children }) => {
@@ -112,8 +119,28 @@ export const CarsProvider = ({ children }) => {
 			return 0;
 		});
 
-		carsData = sortedCars
+		carsData = sortedCars;
 		setCars(carsData);
+	};
+
+	const handleFilterCars = filterOption => {
+		if (typeof filterOption === 'number') {
+			if (filterYearsOptions.includes(filterOption)) {
+				filterYearsOptions = filterYearsOptions.filter(option => option !== filterOption);
+				return;
+			} else {
+				filterYearsOptions.push(filterOption);
+				return;
+			}
+		} else if (typeof filterOption === 'string') {
+			if (filterBrandsOptions.includes(filterOption)) {
+				filterBrandsOptions = filterBrandsOptions.filter(option => option !== filterOption);
+				return;
+			} else {
+				filterBrandsOptions.push(filterOption);
+				return;
+			}
+		}
 	};
 
 	return (
@@ -126,6 +153,7 @@ export const CarsProvider = ({ children }) => {
 				handleRemoveCar: handleRemoveCar,
 				handleSearchCars: handleSearchCars,
 				handleSortCars: handleSortCars,
+				handleFilterCars: handleFilterCars,
 			}}>
 			{children}
 		</CarsContext.Provider>

@@ -7,6 +7,7 @@ export const filterBrands = [
 	'Fiat',
 	'Ford',
 	'Honda',
+	'Lancia',
 	'Mazda',
 	'Nissan',
 	'Opel',
