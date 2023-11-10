@@ -26,7 +26,7 @@ export const CarsContext = createContext({
 	handleRemoveCar: () => {},
 	handleSearchCars: () => {},
 	handleSortCars: () => {},
-	handleFilterCars: () => {},
+	handleFilterParameters: () => {},
 });
 
 export const CarsProvider = ({ children }) => {
@@ -120,7 +120,7 @@ export const CarsProvider = ({ children }) => {
 		setCars(carsData);
 	};
 
-	const handleFiteredCarsDisplay = () => {
+	const handleFiterCars = () => {
 		if (!filterYearsOptions.length) {
 			setCars(carsData);
 			return;
@@ -146,28 +146,21 @@ export const CarsProvider = ({ children }) => {
 		setCars(results);
 	};
 
-	const handleFilterCars = filterOption => {
+	const handleFilterParameters = filterOption => {
 		if (typeof filterOption === 'number') {
 			if (filterYearsOptions.includes(filterOption)) {
 				filterYearsOptions = filterYearsOptions.filter(option => option !== filterOption);
-				handleFiteredCarsDisplay();
-				return;
 			} else {
 				filterYearsOptions.push(filterOption);
-				handleFiteredCarsDisplay();
-				return;
 			}
 		} else if (typeof filterOption === 'string') {
 			if (filterBrandsOptions.includes(filterOption)) {
 				filterBrandsOptions = filterBrandsOptions.filter(option => option !== filterOption);
-				handleFiteredCarsDisplay();
-				return;
 			} else {
 				filterBrandsOptions.push(filterOption);
-				handleFiteredCarsDisplay();
-				return;
 			}
 		}
+		handleFiterCars();
 	};
 
 	return (
@@ -180,7 +173,7 @@ export const CarsProvider = ({ children }) => {
 				handleRemoveCar: handleRemoveCar,
 				handleSearchCars: handleSearchCars,
 				handleSortCars: handleSortCars,
-				handleFilterCars: handleFilterCars,
+				handleFilterParameters: handleFilterParameters,
 			}}>
 			{children}
 		</CarsContext.Provider>

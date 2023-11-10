@@ -4,12 +4,12 @@ import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
 import { FilterItem, FilterItems, Wrapper } from './FilterBox.styles';
 
 export const FilterBox = ({ title, options, $isYears }) => {
-	const { handleFilterCars } = useContext(CarsContext);
+	const { handleFilterParameters } = useContext(CarsContext);
 
 	const handleActiveClass = option => {
 		const filterItem = document.querySelector(`[data-content='${option}']`);
 		filterItem.classList.toggle('active');
-		handleFilterCars(option);
+		handleFilterParameters(option);
 	};
 
 	return (
