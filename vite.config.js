@@ -9,4 +9,8 @@ export default defineConfig({
 			src: '/src',
 		},
 	},
+	test: {
+		globals: true,
+		environment: 'jsdom',
+	},
 });

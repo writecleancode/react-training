@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { cars as primaryCarsData } from 'src/data/cars';
 
 let carsData = [...primaryCarsData];
+let currentCars;
 let valueA;
 let valueB;
 let filterYearsOptions = [];
@@ -67,6 +68,7 @@ export const CarsProvider = ({ children }) => {
 	const handleSearchCars = searchPhrase => {
 		if (!searchPhrase) {
 			setCars(carsData);
+			currentCars = null;
 			return;
 		}
 
@@ -75,6 +77,7 @@ export const CarsProvider = ({ children }) => {
 			return carName.toLowerCase().includes(searchPhrase.toLowerCase());
 		});
 		setCars(matchingCars);
+		currentCars = matchingCars;
 	};
 
 	const setSortVariables = (selectedValue, a, b) => {
@@ -116,13 +119,8 @@ export const CarsProvider = ({ children }) => {
 		setCars(carsData);
 	};
 
-	const handleFiterCars = () => {
-		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
-			setCars(carsData);
-			return;
-		}
-
-		const matchingCars = carsData.filter(carToCheck => {
+	const filterCars = carsToFilter => {
+		const matchingCars = carsToFilter.filter(carToCheck => {
 			let conditionResults = [];
 			let statement;
 
@@ -150,6 +148,20 @@ export const CarsProvider = ({ children }) => {
 			return statement;
 		});
 		setCars(matchingCars);
+	};
+
+	const handleFiterCars = () => {
+		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
+			currentCars ? setCars(currentCars) : setCars(carsData);
+			return;
+		}
+
+		if (!currentCars) {
+			filterCars(carsData);
+			return;
+		} else {
+			filterCars(currentCars);
+		}
 	};
 
 	const handleFilterParameters = filterOption => {
