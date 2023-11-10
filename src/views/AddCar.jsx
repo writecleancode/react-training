@@ -12,13 +12,7 @@ export const AddCar = () => {
 			<Form formValues={formValues} />
 			<PreviewWrapper>
 				<PreviewTitle>Live preview</PreviewTitle>
-				<CarCard
-					car={{
-						...formValues,
-						imgUrl: `src/data/img/${formValues.imgUrl}`,
-					}}
-					$isPreviewCard
-				/>
+				<CarCard car={formValues} $isPreviewCard />
 			</PreviewWrapper>
 		</Wrapper>
 	);

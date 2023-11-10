@@ -14,7 +14,7 @@ const initialFormValues = {
 	productionStartYear: 1997,
 	productionEndYear: 2003,
 	facelift: '1999',
-	imgUrl: 'daewoo_nubira_i.jpg',
+	imgUrl: 'src/data/img/daewoo_nubira_i.jpg',
 };
 
 export const CarsContext = createContext({
@@ -51,10 +51,7 @@ export const CarsProvider = ({ children }) => {
 	};
 
 	const handleAddCar = () => {
-		const newCar = {
-			...formValues,
-			imgUrl: `src/data/img/${formValues.imgUrl}`,
-		};
+		const newCar = formValues;
 		carsData = [newCar, ...cars];
 		setCars(carsData);
 	};
