@@ -2,9 +2,8 @@ import { createContext, useEffect, useState } from 'react';
 import { cars as primaryCarsData } from 'src/data/cars';
 
 let carsData = [...primaryCarsData];
-let currentCars;
-let foundCars;
-let carsWithFilters;
+let searchResultCars;
+let filterResultsCars;
 let valueA;
 let valueB;
 let filterYearsOptions = [];
@@ -73,21 +72,21 @@ export const CarsProvider = ({ children }) => {
 			return carName.toLowerCase().includes(searchPhrase.toLowerCase());
 		});
 		setCars(matchingCars);
-		foundCars = matchingCars;
+		searchResultCars = matchingCars;
 	};
 
 	const handleSearchCars = searchPhrase => {
 		if (!searchPhrase) {
-			carsWithFilters ? setCars(carsWithFilters) : setCars(carsData);
-			foundCars = null;
+			filterResultsCars ? setCars(filterResultsCars) : setCars(carsData);
+			searchResultCars = null;
 			return;
 		}
 
-		if (!carsWithFilters) {
+		if (!filterResultsCars) {
 			searchCars(searchPhrase, carsData);
 			return;
 		} else {
-			searchCars(searchPhrase, carsWithFilters);
+			searchCars(searchPhrase, filterResultsCars);
 		}
 	};
 
@@ -159,21 +158,21 @@ export const CarsProvider = ({ children }) => {
 			return statement;
 		});
 		setCars(matchingCars);
-		carsWithFilters = matchingCars;
+		filterResultsCars = matchingCars;
 	};
 
 	const handleFiterCars = () => {
 		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
-			foundCars ? setCars(foundCars) : setCars(carsData);
-			carsWithFilters = null;
+			searchResultCars ? setCars(searchResultCars) : setCars(carsData);
+			filterResultsCars = null;
 			return;
 		}
 
-		if (!foundCars) {
+		if (!searchResultCars) {
 			filterCars(carsData);
 			return;
 		} else {
-			filterCars(foundCars);
+			filterCars(searchResultCars);
 		}
 	};
 
