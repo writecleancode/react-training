@@ -4,12 +4,9 @@ import { cars as primaryCarsData } from 'src/data/cars';
 let carsData = [...primaryCarsData];
 let valueA;
 let valueB;
-let chosenFilters = {
-	productionYears: [],
-	brands: [],
-};
 let filterYearsOptions = [];
 let filterBrandsOptions = [];
+let carsMatchingAppliedFilters = [];
 
 const initialFormValues = {
 	brand: 'Daewoo',
@@ -123,21 +120,51 @@ export const CarsProvider = ({ children }) => {
 		setCars(carsData);
 	};
 
+	const handleFiteredCarsDisplay = () => {
+		if (!filterYearsOptions.length) {
+			setCars(carsData);
+			return;
+		}
+
+		const results = carsData.filter(carToCheck => {
+			let conditionResults = [];
+			let statement;
+			for (let i = 0; i < filterYearsOptions.length; i++) {
+				const year = filterYearsOptions[i];
+				if (carToCheck.productionStartYear <= year && carToCheck.productionEndYear >= year) {
+					conditionResults.push(true);
+				} else {
+					conditionResults.push(false);
+				}
+
+				if (conditionResults.length === filterYearsOptions.length) {
+					statement = conditionResults.every(item => item === true);
+				}
+			}
+			return statement;
+		});
+		setCars(results);
+	};
+
 	const handleFilterCars = filterOption => {
 		if (typeof filterOption === 'number') {
 			if (filterYearsOptions.includes(filterOption)) {
 				filterYearsOptions = filterYearsOptions.filter(option => option !== filterOption);
+				handleFiteredCarsDisplay();
 				return;
 			} else {
 				filterYearsOptions.push(filterOption);
+				handleFiteredCarsDisplay();
 				return;
 			}
 		} else if (typeof filterOption === 'string') {
 			if (filterBrandsOptions.includes(filterOption)) {
 				filterBrandsOptions = filterBrandsOptions.filter(option => option !== filterOption);
+				handleFiteredCarsDisplay();
 				return;
 			} else {
 				filterBrandsOptions.push(filterOption);
+				handleFiteredCarsDisplay();
 				return;
 			}
 		}
