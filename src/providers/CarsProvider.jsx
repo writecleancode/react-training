@@ -6,7 +6,6 @@ let valueA;
 let valueB;
 let filterYearsOptions = [];
 let filterBrandsOptions = [];
-let carsMatchingAppliedFilters = [];
 
 const initialFormValues = {
 	brand: 'Daewoo',
