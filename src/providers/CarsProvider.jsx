@@ -3,6 +3,8 @@ import { cars as primaryCarsData } from 'src/data/cars';
 
 let carsData = [...primaryCarsData];
 let currentCars;
+let foundCars;
+let carsWithFilters;
 let valueA;
 let valueB;
 let filterYearsOptions = [];
@@ -65,19 +67,28 @@ export const CarsProvider = ({ children }) => {
 		setCars(carsData);
 	};
 
-	const handleSearchCars = searchPhrase => {
-		if (!searchPhrase) {
-			setCars(carsData);
-			currentCars = null;
-			return;
-		}
-
-		const matchingCars = carsData.filter(car => {
+	const searchCars = (searchPhrase, carsToSearchThrough) => {
+		const matchingCars = carsToSearchThrough.filter(car => {
 			const carName = `${car.brand} ${car.model}`;
 			return carName.toLowerCase().includes(searchPhrase.toLowerCase());
 		});
 		setCars(matchingCars);
-		currentCars = matchingCars;
+		foundCars = matchingCars;
+	};
+
+	const handleSearchCars = searchPhrase => {
+		if (!searchPhrase) {
+			carsWithFilters ? setCars(carsWithFilters) : setCars(carsData);
+			foundCars = null;
+			return;
+		}
+
+		if (!carsWithFilters) {
+			searchCars(searchPhrase, carsData);
+			return;
+		} else {
+			searchCars(searchPhrase, carsWithFilters);
+		}
 	};
 
 	const setSortVariables = (selectedValue, a, b) => {
@@ -148,19 +159,21 @@ export const CarsProvider = ({ children }) => {
 			return statement;
 		});
 		setCars(matchingCars);
+		carsWithFilters = matchingCars;
 	};
 
 	const handleFiterCars = () => {
 		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
-			currentCars ? setCars(currentCars) : setCars(carsData);
+			foundCars ? setCars(foundCars) : setCars(carsData);
+			carsWithFilters = null;
 			return;
 		}
 
-		if (!currentCars) {
+		if (!foundCars) {
 			filterCars(carsData);
 			return;
 		} else {
-			filterCars(currentCars);
+			filterCars(foundCars);
 		}
 	};
 
