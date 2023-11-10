@@ -120,32 +120,6 @@ export const CarsProvider = ({ children }) => {
 		setCars(carsData);
 	};
 
-	// const handleFiterCars = () => {
-	// 	if (!filterYearsOptions.length && !filterBrandsOptions.length) {
-	// 		setCars(carsData);
-	// 		return;
-	// 	}
-
-	// 	const matchingCars = carsData.filter(carToCheck => {
-	// 		let conditionResults = [];
-	// 		let statement;
-	// 		for (let i = 0; i < filterYearsOptions.length; i++) {
-	// 			const year = filterYearsOptions[i];
-	// 			if (carToCheck.productionStartYear <= year && carToCheck.productionEndYear >= year) {
-	// 				conditionResults.push(true);
-	// 			} else {
-	// 				conditionResults.push(false);
-	// 			}
-
-	// 			if (conditionResults.length === filterYearsOptions.length) {
-	// 				statement = conditionResults.every(item => item === true);
-	// 			}
-	// 		}
-	// 		return statement;
-	// 	});
-	// 	setCars(matchingCars);
-	// };
-
 	const handleFiterCars = () => {
 		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
 			setCars(carsData);
@@ -154,15 +128,15 @@ export const CarsProvider = ({ children }) => {
 
 		const matchingCars = carsData.filter(carToCheck => {
 			let conditionResults = [];
-			let statement;		
-			
+			let statement;
+
 			for (let i = 0; i < filterBrandsOptions.length; i++) {
 				const brand = filterBrandsOptions[i];
 				if (carToCheck.brand === brand) {
-					conditionResults.push(true)
+					conditionResults.push(true);
 				} else {
-					conditionResults.push(false)
-				}				
+					conditionResults.push(false);
+				}
 			}
 
 			for (let i = 0; i < filterYearsOptions.length; i++) {
@@ -173,7 +147,7 @@ export const CarsProvider = ({ children }) => {
 					conditionResults.push(false);
 				}
 			}
-			
+
 			if (conditionResults.length === filterYearsOptions.length + filterBrandsOptions.length) {
 				statement = conditionResults.every(item => item === true);
 			}
