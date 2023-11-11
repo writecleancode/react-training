@@ -23,7 +23,7 @@ export const CarCard = ({
 				<CarInfoBox title={'Facelift'} info={facelift} />
 			</CarInfoWrapper>
 			{$isPreviewCard ? null : (
-				<DeleteButton onClick={() => handleRemoveCar(brand, model, generation)}>
+				<DeleteButton onClick={() => handleRemoveCar(brand, model, generation)} aria-label='delete car'>
 					<TrashIcon />
 				</DeleteButton>
 			)}

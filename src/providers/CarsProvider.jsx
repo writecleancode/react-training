@@ -59,11 +59,26 @@ export const CarsProvider = ({ children }) => {
 	};
 
 	const handleRemoveCar = (brand, model, generation) => {
-		const filteredCars = cars.filter(car => {
+		const filteredCars = carsData.filter(car => {
 			return car.brand !== brand && car.model !== model && car.generation !== generation;
 		});
 		carsData = filteredCars;
-		setCars(carsData);
+
+		if (searchResultCars) {
+			const filteredCars = searchResultCars.filter(car => {
+				return car.brand !== brand && car.model !== model && car.generation !== generation;
+			});
+			setCars(filteredCars);
+			return;
+		} else if (filterResultsCars) {
+			const filteredCars = filterResultsCars.filter(car => {
+				return car.brand !== brand && car.model !== model && car.generation !== generation;
+			});
+			setCars(filteredCars);
+			return;
+		} else {
+			setCars(carsData);
+		}
 	};
 
 	const searchCars = (searchPhrase, carsToSearchThrough) => {

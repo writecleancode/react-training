@@ -7,7 +7,7 @@ export const FormField = ({ value, onChange, label, name, id, type = 'text' }) =
 	return (
 		<Wrapper>
 			<StyledLabel htmlFor={name}>{label}</StyledLabel>
-			<StyledInput value={value} onChange={onChange} name={name} id={id} type={type} />
+			<StyledInput value={value} onChange={onChange} name={name} id={id} type={type} data-testid={label} />
 		</Wrapper>
 	);
 };

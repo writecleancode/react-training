@@ -17,7 +17,7 @@ export const FilterBox = ({ title, options, $isYears }) => {
 			<StyledTitle $isFilterTitle>{title}</StyledTitle>
 			<FilterItems>
 				{options.map(option => (
-					<FilterItem key={option} $isYears={$isYears} onClick={() => handleActiveClass(option)} data-content={option}>
+					<FilterItem key={option} $isYears={$isYears} onClick={() => handleActiveClass(option)} data-content={option} data-testid={option}>
 						{option}
 					</FilterItem>
 				))}
