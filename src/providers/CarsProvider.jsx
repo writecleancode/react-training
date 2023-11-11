@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
-import { cars as primaryCarsData } from 'src/data/cars';
+import axios from 'axios';
 
-let carsData = [...primaryCarsData];
+let carsData = [];
 let searchResultCars;
 let filterResultsCars;
 let valueA;
@@ -10,13 +10,16 @@ let filterYearsOptions = [];
 let filterBrandsOptions = [];
 
 const initialFormValues = {
+	id: Math.round(Math.random() * 100000),
 	brand: 'Daewoo',
 	model: 'Nubira',
 	generation: 'I (J100)',
-	productionStartYear: 1997,
-	productionEndYear: 2003,
+	firstYearOfProduction: 1997,
+	lastYearOfProduction: 2003,
 	facelift: '1999',
-	imgUrl: 'src/data/img/daewoo_nubira_i.jpg',
+	image: {
+		url: 'https://www.datocms-assets.com/112049/1699699918-daewoo_nubira_i.jpg',
+	},
 };
 
 export const CarsContext = createContext({
@@ -30,16 +33,50 @@ export const CarsContext = createContext({
 	handleFilterParameters: () => {},
 });
 
+export const query = `
+{
+  allCars {
+    id
+    brand
+    model
+    generation
+    firstYearOfProduction
+    lastYearOfProduction
+    facelift
+    image {
+      url
+    }
+  }
+}
+`;
+
 export const CarsProvider = ({ children }) => {
 	const [cars, setCars] = useState([]);
 	const [formValues, setFormValues] = useState(initialFormValues);
 
 	useEffect(() => {
-		setCars(primaryCarsData);
-	}, [primaryCarsData]);
+		axios
+			.post(
+				'https://graphql.datocms.com/',
+				{
+					query: query,
+				},
+				{
+					headers: {
+						authorization: `Bearer ${import.meta.env.VITE_DATO_TOKEN}`,
+					},
+				}
+			)
+			.then(({ data: { data } }) => {
+				console.log('DZIAŁAAAA');
+				carsData = data.allCars;
+				setCars(data.allCars);
+			})
+			.catch(err => console.log(err));
+	}, []);
 
 	const handleInputChange = e => {
-		if (e.target.name === 'productionStartYear' || e.target.name === 'productionEndYear') {
+		if (e.target.name === 'firstYearOfProduction' || e.target.name === 'lastYearOfProduction') {
 			setFormValues({
 				...formValues,
 				[e.target.name]: Number(e.target.value),
@@ -116,12 +153,12 @@ export const CarsProvider = ({ children }) => {
 				valueB = `${a.brand.toLowerCase()} ${a.model.toLowerCase()}`;
 				break;
 			case 'byYear':
-				valueA = a.productionStartYear;
-				valueB = b.productionStartYear;
+				valueA = a.firstYearOfProduction;
+				valueB = b.firstYearOfProduction;
 				break;
 			case 'byYearReverse':
-				valueA = b.productionStartYear;
-				valueB = a.productionStartYear;
+				valueA = b.firstYearOfProduction;
+				valueB = a.firstYearOfProduction;
 				break;
 			default:
 				break;
@@ -160,7 +197,7 @@ export const CarsProvider = ({ children }) => {
 
 			for (let i = 0; i < filterYearsOptions.length; i++) {
 				const year = filterYearsOptions[i];
-				if (carToCheck.productionStartYear <= year && carToCheck.productionEndYear >= year) {
+				if (carToCheck.firstYearOfProduction <= year && carToCheck.lastYearOfProduction >= year) {
 					conditionResults.push(true);
 				} else {
 					conditionResults.push(false);

@@ -1,17 +1,57 @@
 import { fireEvent, render, screen } from 'src/test-utils';
 import '@testing-library/jest-dom';
+import MockAdapter from 'axios-mock-adapter';
+import axios from 'axios';
+import { query } from 'src/providers/CarsProvider';
 import { BrowserRouter } from 'react-router-dom';
 import { MainTemplate } from 'src/components/templates/MainTemplate';
 import { Dashboard } from './Dashboard';
 
+const mock = new MockAdapter(axios);
+
 describe('Dashboard', () => {
-	it('Renders the component', () => {
+	mock
+		.onPost('https://graphql.datocms.com/', {
+			query: query,
+		})
+		.reply(200, {
+			data: {
+				allCars: [
+					{
+						id: '1',
+						brand: 'Ford',
+						model: 'Focus',
+						generation: 'I (C170)',
+						firstYearOfProduction: 1998,
+						lastYearOfProduction: 2005,
+						facelift: '2001',
+						image: {
+							url: 'https://www.datocms-assets.com/112049/1699699930-ford_focus_i.jpg',
+						},
+					},
+					{
+						id: '2',
+						brand: 'Volkswagen',
+						model: 'Golf',
+						generation: 'IV (1J)',
+						firstYearOfProduction: 1997,
+						lastYearOfProduction: 2003,
+						facelift: '-',
+						image: {
+							url: 'https://www.datocms-assets.com/112049/1699699980-volkswagen_golf_iv.jpg',
+						},
+					},
+				],
+			},
+		});	
+
+	it('Renders the component', async () => {
 		render(<Dashboard />);
 		screen.getByPlaceholderText('find car');
-		screen.getByText('Volkswagen Golf');
+		await screen.findByText('Volkswagen Golf');
 	});
 
-	it('Displays only matching cars is searchPhrase is present', () => {
+	it('Displays only matching cars is searchPhrase is present', async () => {
 		render(<Dashboard />);
 		const absentCar = screen.getByText('Ford Focus');
 		const presentCar = screen.getByText('Volkswagen Golf');
@@ -36,6 +76,7 @@ describe('Dashboard', () => {
 		fireEvent.click(screen.getByTestId('1997'));
 		expect(absentCar).not.toBeInTheDocument();
 		expect(presentCar).toBeInTheDocument();
+		fireEvent.click(screen.getByTestId('1997'));
 	});
 
 	it('Displays only matching cars if brand filters are matching', () => {
@@ -51,6 +92,7 @@ describe('Dashboard', () => {
 		fireEvent.click(screen.getByTestId('Volkswagen'));
 		expect(absentCar).not.toBeInTheDocument();
 		expect(presentCar).toBeInTheDocument();
+		fireEvent.click(screen.getByTestId('Volkswagen'));
 	});
 
 	it('Displays only cars matching search phrase, years filters and brand filters', () => {
@@ -68,6 +110,8 @@ describe('Dashboard', () => {
 		fireEvent.change(screen.getByPlaceholderText('find car'), { target: { value: 'go' } });
 		expect(absentCar).not.toBeInTheDocument();
 		expect(presentCar).toBeInTheDocument();
+		fireEvent.click(screen.getByTestId('1997'));
+		fireEvent.click(screen.getByTestId('Volkswagen'));
 	});
 
 	it('Removes car from the list', () => {

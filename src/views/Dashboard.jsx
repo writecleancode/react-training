@@ -22,7 +22,7 @@ export const Dashboard = () => {
 			</SearchWrapper>
 			<CarsWrapper>
 				{cars.map(car => (
-					<CarCard key={car.brand + car.model} car={car} />
+					<CarCard key={car.id} car={car} />
 				))}
 			</CarsWrapper>
 		</Wrapper>

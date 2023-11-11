@@ -9,17 +9,17 @@ import { CarInfoWrapper, DeleteButton, Wrapper } from './CarCards.styles';
 
 export const CarCard = ({
 	$isPreviewCard,
-	car: { brand, model, imgUrl, generation, productionStartYear, productionEndYear, facelift },
+	car: { brand, model, image, generation, firstYearOfProduction, lastYearOfProduction, facelift },
 }) => {
 	const { handleRemoveCar } = useContext(CarsContext);
 
 	return (
 		<Wrapper>
 			<CarName>{`${brand} ${model}`}</CarName>
-			<CarImg src={imgUrl} alt={`${brand} ${model} ${generation}`} />
+			<CarImg src={image.url} alt={`${brand} ${model} ${generation}`} />
 			<CarInfoWrapper>
 				<CarInfoBox title={'Generation'} info={generation} />
-				<CarInfoBox title={'Production years'} info={`${productionStartYear} - ${productionEndYear}`} />
+				<CarInfoBox title={'Production years'} info={`${firstYearOfProduction} - ${lastYearOfProduction}`} />
 				<CarInfoBox title={'Facelift'} info={facelift} />
 			</CarInfoWrapper>
 			{$isPreviewCard ? null : (
@@ -36,10 +36,12 @@ CarCard.propTypes = {
 	car: PropTypes.shape({
 		brand: PropTypes.string.isRequired,
 		model: PropTypes.string.isRequired,
-		imgUrl: PropTypes.string,
+		image: PropTypes.shape({
+			url: PropTypes.string,
+		}),
 		generation: PropTypes.string.isRequired,
-		productionStartYear: PropTypes.number.isRequired,
-		productionEndYear: PropTypes.number.isRequired,
+		firstYearOfProduction: PropTypes.number.isRequired,
+		lastYearOfProduction: PropTypes.number.isRequired,
 		facelift: PropTypes.string.isRequired,
 	}),
 };
