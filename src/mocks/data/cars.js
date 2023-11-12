@@ -1,5 +1,8 @@
+import { v4 as uuid } from 'uuid';
+
 export const cars = [
 	{
+		id: uuid(),
 		brand: 'Alfa Romeo',
 		model: '146',
 		generation: 'I (Type 930)',
@@ -9,6 +12,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699786166-alfa_romeo_146_i.png',
 	},
 	{
+		id: uuid(),
 		brand: 'Audi',
 		model: 'A3',
 		generation: 'I (8L)',
@@ -18,6 +22,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699902-audi_a3_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'BMW',
 		model: '3 Compact',
 		generation: 'I (E36)',
@@ -27,6 +32,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699786215-bmw_3_compact_i.png',
 	},
 	{
+		id: uuid(),
 		brand: 'Citroen',
 		model: 'Xsara',
 		generation: 'I (N1)',
@@ -36,6 +42,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699913-citroen_xsara_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Fiat',
 		model: 'Brava',
 		generation: 'I (Type 182)',
@@ -45,6 +52,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699925-fiat_brava_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Ford',
 		model: 'Focus',
 		generation: 'I (C170)',
@@ -54,6 +62,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699930-ford_focus_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Honda',
 		model: 'Civic',
 		generation: 'VI',
@@ -63,6 +72,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699933-honda_civic_vi.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Lancia',
 		model: 'Delta',
 		generation: 'II',
@@ -72,6 +82,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699938-lancia_delta_ii.webp',
 	},
 	{
+		id: uuid(),
 		brand: 'Mazda',
 		model: '323',
 		generation: 'VI (BJ)',
@@ -81,6 +92,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699943-mazda_323_vi.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Nissan',
 		model: 'Almera',
 		generation: 'I (N15)',
@@ -90,6 +102,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699947-nissan_almera_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Opel',
 		model: 'Astra',
 		generation: 'II (G)',
@@ -99,6 +112,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699951-opel_astra_ii.webp',
 	},
 	{
+		id: uuid(),
 		brand: 'Peugeot',
 		model: '306',
 		generation: 'I (7A/C)',
@@ -108,6 +122,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699962-peugeot_306_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Renault',
 		model: 'Megane',
 		generation: 'I (BA)',
@@ -117,6 +132,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699967-renault_megane_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Seat',
 		model: 'Leon',
 		generation: 'I (1M)',
@@ -126,6 +142,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699971-seat_leon_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Toyota',
 		model: 'Corolla',
 		generation: 'VIII (E110)',
@@ -135,6 +152,7 @@ export const cars = [
 		imgUrl: 'https://www.datocms-assets.com/112049/1699699976-toyota_corolla_viii.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Volkswagen',
 		model: 'Golf',
 		generation: 'IV (1J)',
