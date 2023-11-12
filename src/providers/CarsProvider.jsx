@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from 'react';
-import { cars as primaryCarsData } from 'src/data/cars';
+import axios from 'axios';
 
-let carsData = [...primaryCarsData];
+let carsData = [];
 let searchResultCars;
 let filterResultsCars;
 let valueA;
@@ -16,7 +16,7 @@ const initialFormValues = {
 	productionStartYear: 1997,
 	productionEndYear: 2003,
 	facelift: '1999',
-	imgUrl: 'src/data/img/daewoo_nubira_i.jpg',
+	imgUrl: 'https://www.datocms-assets.com/112049/1699699918-daewoo_nubira_i.jpg',
 };
 
 export const CarsContext = createContext({
@@ -35,8 +35,14 @@ export const CarsProvider = ({ children }) => {
 	const [formValues, setFormValues] = useState(initialFormValues);
 
 	useEffect(() => {
-		setCars(primaryCarsData);
-	}, [primaryCarsData]);
+		axios
+			.get('/cars')
+			.then(({ data }) => {
+				setCars(data.cars);
+				carsData = data.cars;
+			})
+			.catch(err => console.log(err));
+	}, []);
 
 	const handleInputChange = e => {
 		if (e.target.name === 'productionStartYear' || e.target.name === 'productionEndYear') {

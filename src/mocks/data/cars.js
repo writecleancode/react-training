@@ -6,7 +6,7 @@ export const cars = [
 		productionStartYear: 1994,
 		productionEndYear: 2000,
 		facelift: '1999',
-		imgUrl: 'src/data/img/alfa_romeo_146_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699786166-alfa_romeo_146_i.png',
 	},
 	{
 		brand: 'Audi',
@@ -15,7 +15,7 @@ export const cars = [
 		productionStartYear: 1996,
 		productionEndYear: 2003,
 		facelift: '2000',
-		imgUrl: 'src/data/img/audi_a3_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699902-audi_a3_i.jpg',
 	},
 	{
 		brand: 'BMW',
@@ -24,7 +24,7 @@ export const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 2000,
 		facelift: '-',
-		imgUrl: 'src/data/img/bmw_3_compact_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699786215-bmw_3_compact_i.png',
 	},
 	{
 		brand: 'Citroen',
@@ -33,7 +33,7 @@ export const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2005,
 		facelift: '2000',
-		imgUrl: 'src/data/img/citroen_xsara_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699913-citroen_xsara_i.jpg',
 	},
 	{
 		brand: 'Fiat',
@@ -42,7 +42,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
-		imgUrl: 'src/data/img/fiat_brava_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699925-fiat_brava_i.jpg',
 	},
 	{
 		brand: 'Ford',
@@ -51,7 +51,7 @@ export const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2005,
 		facelift: '2001',
-		imgUrl: 'src/data/img/ford_focus_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699930-ford_focus_i.jpg',
 	},
 	{
 		brand: 'Honda',
@@ -60,7 +60,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2001,
 		facelift: '1999',
-		imgUrl: 'src/data/img/honda_civic_vi.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699933-honda_civic_vi.jpg',
 	},
 	{
 		brand: 'Lancia',
@@ -69,7 +69,7 @@ export const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 1999,
 		facelift: '-',
-		imgUrl: 'src/data/img/lancia_delta_ii.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699938-lancia_delta_ii.webp',
 	},
 	{
 		brand: 'Mazda',
@@ -78,7 +78,7 @@ export const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2003,
 		facelift: '2001',
-		imgUrl: 'src/data/img/mazda_323_vi.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699943-mazda_323_vi.jpg',
 	},
 	{
 		brand: 'Nissan',
@@ -87,7 +87,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2000,
 		facelift: '1998',
-		imgUrl: 'src/data/img/nissan_almera_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699947-nissan_almera_i.jpg',
 	},
 	{
 		brand: 'Opel',
@@ -96,7 +96,7 @@ export const cars = [
 		productionStartYear: 1998,
 		productionEndYear: 2009,
 		facelift: '-',
-		imgUrl: 'src/data/img/opel_astra_ii.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699951-opel_astra_ii.webp',
 	},
 	{
 		brand: 'Peugeot',
@@ -105,7 +105,7 @@ export const cars = [
 		productionStartYear: 1993,
 		productionEndYear: 2002,
 		facelift: '1997, 1999',
-		imgUrl: 'src/data/img/peugeot_306_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699962-peugeot_306_i.jpg',
 	},
 	{
 		brand: 'Renault',
@@ -114,7 +114,7 @@ export const cars = [
 		productionStartYear: 1995,
 		productionEndYear: 2003,
 		facelift: '1999',
-		imgUrl: 'src/data/img/renault_megane_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699967-renault_megane_i.jpg',
 	},
 	{
 		brand: 'Seat',
@@ -123,7 +123,7 @@ export const cars = [
 		productionStartYear: 1999,
 		productionEndYear: 2005,
 		facelift: '-',
-		imgUrl: 'src/data/img/seat_leon_i.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699971-seat_leon_i.jpg',
 	},
 	{
 		brand: 'Toyota',
@@ -132,7 +132,7 @@ export const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2002,
 		facelift: '1999',
-		imgUrl: 'src/data/img/toyota_corolla_viii.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699976-toyota_corolla_viii.jpg',
 	},
 	{
 		brand: 'Volkswagen',
@@ -141,6 +141,6 @@ export const cars = [
 		productionStartYear: 1997,
 		productionEndYear: 2003,
 		facelift: '-',
-		imgUrl: 'src/data/img/volkswagen_golf_iv.jpg',
+		imgUrl: 'https://www.datocms-assets.com/112049/1699699980-volkswagen_golf_iv.jpg',
 	},
 ];
