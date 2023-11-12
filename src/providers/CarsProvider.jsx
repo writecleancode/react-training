@@ -61,9 +61,16 @@ export const CarsProvider = ({ children }) => {
 	};
 
 	const handleAddCar = () => {
-		const newCar = formValues;
-		carsData = [newCar, ...cars];
-		setCars(carsData);
+		const addedCar = formValues;
+		axios
+			.post('/cars/add-car', { addedCar: addedCar })
+			.then(({ data }) => {
+				setCars(data.cars);
+				carsData = data.cars;
+				foundCars = data.cars;
+				filteredCars = data.cars
+			})
+			.catch(err => console.log(err));
 	};
 
 	const removeCar = (brand, model, generation, carsToSearchThrough) => {
