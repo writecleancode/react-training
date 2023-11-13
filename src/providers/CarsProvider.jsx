@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { v4 as uuid } from 'uuid';
 
 let carsData = [];
 let foundCars = [];
@@ -90,9 +91,14 @@ export const CarsProvider = ({ children }) => {
 	};
 
 	const handleAddCar = () => {
-		const newCar = formValues;
+		const newCar = {
+			id: uuid(),
+			...formValues,
+		};
 		carsData = [newCar, ...cars];
 		setCars(carsData);
+		foundCars = carsData;
+		filteredCars = carsData;
 	};
 
 	const removeCar = (brand, model, generation, carsToSearchThrough) => {
@@ -124,15 +130,11 @@ export const CarsProvider = ({ children }) => {
 		if (!searchPhrase) {
 			foundCars = carsData;
 		} else {
-			carsData.filter(() => {
-				// ================================================================================================================================================
-				const matchingCars = carsData.filter(car => {
-					const carName = `${car.brand} ${car.model}`;
-					return carName.toLowerCase().includes(searchPhrase.toLowerCase());
-				});
-				// ================================================================================================================================================
-				foundCars = matchingCars;
+			const matchingCars = carsData.filter(car => {
+				const carName = `${car.brand} ${car.model}`;
+				return carName.toLowerCase().includes(searchPhrase.toLowerCase());
 			});
+			foundCars = matchingCars;
 		}
 		handleDisplayCars();
 	};
