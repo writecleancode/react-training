@@ -102,13 +102,11 @@ export const CarsProvider = ({ children }) => {
 		if (!searchPhrase) {
 			foundCars = carsData;
 		} else {
-			carsData.filter(() => {
-				const matchingCars = carsData.filter(car => {
-					const carName = `${car.brand} ${car.model}`;
-					return carName.toLowerCase().includes(searchPhrase.toLowerCase());
-				});
-				foundCars = matchingCars;
+			const matchingCars = carsData.filter(car => {
+				const carName = `${car.brand} ${car.model}`;
+				return carName.toLowerCase().includes(searchPhrase.toLowerCase());
 			});
+			foundCars = matchingCars;
 		}
 		handleDisplayCars();
 	};

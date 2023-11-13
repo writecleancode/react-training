@@ -24,7 +24,6 @@ export const CarCard = ({
 			</CarInfoWrapper>
 			{$isPreviewCard ? null : (
 				<DeleteButton onClick={() => handleRemoveCar(id)} aria-label='delete car'>
-				{/* <DeleteButton onClick={() => handleRemoveCar(brand, model, generation)} aria-label='delete car'> */}
 					<TrashIcon />
 				</DeleteButton>
 			)}
