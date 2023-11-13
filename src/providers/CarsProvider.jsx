@@ -83,7 +83,7 @@ export const CarsProvider = ({ children }) => {
 	const handleRemoveCar = carId => {
 		carsData = removeCar(carId, carsData);
 		filteredCars = removeCar(carId, filteredCars);
-		handleFiterCars();
+		handleFilterCars();
 	};
 
 	const handleDisplayCars = () => {
@@ -157,7 +157,7 @@ export const CarsProvider = ({ children }) => {
 		handleDisplayCars();
 	};
 
-	const handleFiterCars = () => {
+	const handleFilterCars = () => {
 		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
 			filteredCars = carsData;
 		} else {
@@ -204,7 +204,7 @@ export const CarsProvider = ({ children }) => {
 				filterBrandsOptions.push(filterOption);
 			}
 		}
-		handleFiterCars();
+		handleFilterCars();
 	};
 
 	return (
