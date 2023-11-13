@@ -167,9 +167,8 @@ export const CarsProvider = ({ children }) => {
 				let conditionResults = [];
 				let statement;
 
-				for (let i = 0; i < filterBrandsOptions.length; i++) {
-					const brand = filterBrandsOptions[i];
-					if (carToCheck.brand === brand) {
+				if (filterBrandsOptions.length) {
+					if (filterBrandsOptions.includes(carToCheck.brand)) {
 						conditionResults.push(true);
 					} else {
 						conditionResults.push(false);
@@ -185,9 +184,7 @@ export const CarsProvider = ({ children }) => {
 					}
 				}
 
-				if (conditionResults.length === filterYearsOptions.length + filterBrandsOptions.length) {
-					statement = conditionResults.every(item => item === true);
-				}
+				statement = conditionResults.every(item => item === true);
 				return statement;
 			});
 			filteredCars = matchingCars;
