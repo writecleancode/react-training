@@ -1,5 +1,8 @@
+import { v4 as uuid } from 'uuid';
+
 export const cars = [
 	{
+		id: uuid(),
 		brand: 'Alfa Romeo',
 		model: '146',
 		generation: 'I (Type 930)',
@@ -9,6 +12,7 @@ export const cars = [
 		imgUrl: 'src/data/img/alfa_romeo_146_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Audi',
 		model: 'A3',
 		generation: 'I (8L)',
@@ -18,6 +22,7 @@ export const cars = [
 		imgUrl: 'src/data/img/audi_a3_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'BMW',
 		model: '3 Compact',
 		generation: 'I (E36)',
@@ -27,6 +32,7 @@ export const cars = [
 		imgUrl: 'src/data/img/bmw_3_compact_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Citroen',
 		model: 'Xsara',
 		generation: 'I (N1)',
@@ -36,6 +42,7 @@ export const cars = [
 		imgUrl: 'src/data/img/citroen_xsara_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Fiat',
 		model: 'Brava',
 		generation: 'I (Type 182)',
@@ -45,6 +52,7 @@ export const cars = [
 		imgUrl: 'src/data/img/fiat_brava_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Ford',
 		model: 'Focus',
 		generation: 'I (C170)',
@@ -54,6 +62,7 @@ export const cars = [
 		imgUrl: 'src/data/img/ford_focus_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Honda',
 		model: 'Civic',
 		generation: 'VI',
@@ -63,6 +72,7 @@ export const cars = [
 		imgUrl: 'src/data/img/honda_civic_vi.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Lancia',
 		model: 'Delta',
 		generation: 'II',
@@ -72,6 +82,7 @@ export const cars = [
 		imgUrl: 'src/data/img/lancia_delta_ii.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Mazda',
 		model: '323',
 		generation: 'VI (BJ)',
@@ -81,6 +92,7 @@ export const cars = [
 		imgUrl: 'src/data/img/mazda_323_vi.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Nissan',
 		model: 'Almera',
 		generation: 'I (N15)',
@@ -90,6 +102,7 @@ export const cars = [
 		imgUrl: 'src/data/img/nissan_almera_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Opel',
 		model: 'Astra',
 		generation: 'II (G)',
@@ -99,6 +112,7 @@ export const cars = [
 		imgUrl: 'src/data/img/opel_astra_ii.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Peugeot',
 		model: '306',
 		generation: 'I (7A/C)',
@@ -108,6 +122,7 @@ export const cars = [
 		imgUrl: 'src/data/img/peugeot_306_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Renault',
 		model: 'Megane',
 		generation: 'I (BA)',
@@ -117,6 +132,7 @@ export const cars = [
 		imgUrl: 'src/data/img/renault_megane_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Seat',
 		model: 'Leon',
 		generation: 'I (1M)',
@@ -126,6 +142,7 @@ export const cars = [
 		imgUrl: 'src/data/img/seat_leon_i.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Toyota',
 		model: 'Corolla',
 		generation: 'VIII (E110)',
@@ -135,6 +152,7 @@ export const cars = [
 		imgUrl: 'src/data/img/toyota_corolla_viii.jpg',
 	},
 	{
+		id: uuid(),
 		brand: 'Volkswagen',
 		model: 'Golf',
 		generation: 'IV (1J)',
