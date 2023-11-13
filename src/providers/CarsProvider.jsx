@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { cars as primaryCarsData } from 'src/data/cars';
+import { v4 as uuid } from 'uuid';
 
 let carsData = [...primaryCarsData];
 let foundCars = carsData;
@@ -53,9 +54,14 @@ export const CarsProvider = ({ children }) => {
 	};
 
 	const handleAddCar = () => {
-		const newCar = formValues;
+		const newCar = {
+			id: uuid(),
+			...formValues,
+		};
 		carsData = [newCar, ...cars];
 		setCars(carsData);
+		foundCars = carsData;
+		filteredCars = carsData;
 	};
 
 	const removeCar = (brand, model, generation, carsToSearchThrough) => {
