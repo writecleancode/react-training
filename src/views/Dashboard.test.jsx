@@ -30,7 +30,7 @@ describe('Dashboard', () => {
 		);
 		const absentCar = screen.getByText('Ford Focus');
 		const presentCar = screen.getByText('Volkswagen Golf');
-		screen.getByText('1997');
+		screen.getByTestId('1997');
 		fireEvent.click(screen.getByTestId('1997'));
 		expect(absentCar).not.toBeInTheDocument();
 		expect(presentCar).toBeInTheDocument();
