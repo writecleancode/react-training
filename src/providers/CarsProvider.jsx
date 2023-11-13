@@ -68,9 +68,8 @@ export const CarsProvider = ({ children }) => {
 				}
 			)
 			.then(({ data: { data } }) => {
-				console.log('DZIAŁAAAA');
-				carsData = data.allCars;
 				setCars(data.allCars);
+				carsData = data.allCars;
 			})
 			.catch(err => console.log(err));
 	}, []);
