@@ -9,7 +9,7 @@ import { CarInfoWrapper, DeleteButton, Wrapper } from './CarCards.styles';
 
 export const CarCard = ({
 	$isPreviewCard,
-	car: { brand, model, imgUrl, generation, productionStartYear, productionEndYear, facelift },
+	car: { id = '', brand, model, imgUrl, generation, productionStartYear, productionEndYear, facelift },
 }) => {
 	const { handleRemoveCar } = useContext(CarsContext);
 
@@ -23,7 +23,7 @@ export const CarCard = ({
 				<CarInfoBox title={'Facelift'} info={facelift} />
 			</CarInfoWrapper>
 			{$isPreviewCard ? null : (
-				<DeleteButton onClick={() => handleRemoveCar(brand, model, generation)} aria-label='delete car'>
+				<DeleteButton onClick={() => handleRemoveCar(id)} aria-label='delete car'>
 					<TrashIcon />
 				</DeleteButton>
 			)}
@@ -34,6 +34,7 @@ export const CarCard = ({
 CarCard.propTypes = {
 	$isPreviewCard: PropTypes.bool,
 	car: PropTypes.shape({
+		id: PropTypes.string,
 		brand: PropTypes.string.isRequired,
 		model: PropTypes.string.isRequired,
 		imgUrl: PropTypes.string,

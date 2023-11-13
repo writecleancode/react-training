@@ -64,16 +64,16 @@ export const CarsProvider = ({ children }) => {
 		filteredCars = carsData;
 	};
 
-	const removeCar = (brand, model, generation, carsToSearchThrough) => {
+	const removeCar = (carId, carsToSearchThrough) => {
 		const filteredCars = carsToSearchThrough.filter(car => {
-			return car.brand !== brand && car.model !== model && car.generation !== generation;
+			return car.id !== carId;
 		});
 		return filteredCars;
 	};
 
-	const handleRemoveCar = (brand, model, generation) => {
-		carsData = removeCar(brand, model, generation, carsData);
-		filteredCars = removeCar(brand, model, generation, filteredCars);
+	const handleRemoveCar = carId => {
+		carsData = removeCar(carId, carsData);
+		filteredCars = removeCar(carId, filteredCars);
 		handleFilterCars();
 	};
 
