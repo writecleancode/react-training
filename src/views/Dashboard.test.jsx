@@ -22,13 +22,11 @@ describe('Dashboard', () => {
 
 	it('Displays only matching cars if production years filters are matching', () => {
 		render(
-			<>
-				<BrowserRouter>
-					<MainTemplate>
-						<Dashboard />
-					</MainTemplate>
-				</BrowserRouter>
-			</>
+			<BrowserRouter>
+				<MainTemplate>
+					<Dashboard />
+				</MainTemplate>
+			</BrowserRouter>
 		);
 		const absentCar = screen.getByText('Ford Focus');
 		const presentCar = screen.getByText('Volkswagen Golf');
@@ -49,8 +47,13 @@ describe('Dashboard', () => {
 		const absentCar = screen.getByText('Ford Focus');
 		const presentCar = screen.getByText('Volkswagen Golf');
 		fireEvent.click(screen.getByTestId('Volkswagen'));
+		fireEvent.click(screen.getByTestId('Alfa Romeo'));
 		expect(absentCar).not.toBeInTheDocument();
 		expect(presentCar).toBeInTheDocument();
+		screen.getByText('Alfa Romeo 146');
+
+		fireEvent.click(screen.getByTestId('Volkswagen'));
+		fireEvent.click(screen.getByTestId('Alfa Romeo'));
 	});
 
 	it('Displays only cars matching search phrase, years filters and brand filters', () => {
@@ -68,6 +71,8 @@ describe('Dashboard', () => {
 		fireEvent.change(screen.getByPlaceholderText('find car'), { target: { value: 'go' } });
 		expect(absentCar).not.toBeInTheDocument();
 		expect(presentCar).toBeInTheDocument();
+
+		fireEvent.click(screen.getByTestId('Volkswagen'));
 	});
 
 	it('Removes car from the list', () => {
