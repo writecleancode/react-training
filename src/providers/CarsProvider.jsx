@@ -2,15 +2,14 @@ import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 let carsData = [];
-let searchResultCars;
-let filterResultsCars;
+let foundCars = [];
+let filteredCars = [];
 let valueA;
 let valueB;
 let filterYearsOptions = [];
 let filterBrandsOptions = [];
 
 const initialFormValues = {
-	id: Math.round(Math.random() * 100000),
 	brand: 'Daewoo',
 	model: 'Nubira',
 	generation: 'I (J100)',
@@ -70,6 +69,8 @@ export const CarsProvider = ({ children }) => {
 			.then(({ data: { data } }) => {
 				setCars(data.allCars);
 				carsData = data.allCars;
+				foundCars = data.allCars;
+				filteredCars = data.allCars;
 			})
 			.catch(err => console.log(err));
 	}, []);
@@ -94,51 +95,46 @@ export const CarsProvider = ({ children }) => {
 		setCars(carsData);
 	};
 
-	const handleRemoveCar = (brand, model, generation) => {
-		const filteredCars = carsData.filter(car => {
+	const removeCar = (brand, model, generation, carsToSearchThrough) => {
+		const filteredCars = carsToSearchThrough.filter(car => {
 			return car.brand !== brand && car.model !== model && car.generation !== generation;
 		});
-		carsData = filteredCars;
-
-		if (searchResultCars) {
-			const filteredCars = searchResultCars.filter(car => {
-				return car.brand !== brand && car.model !== model && car.generation !== generation;
-			});
-			setCars(filteredCars);
-			return;
-		} else if (filterResultsCars) {
-			const filteredCars = filterResultsCars.filter(car => {
-				return car.brand !== brand && car.model !== model && car.generation !== generation;
-			});
-			setCars(filteredCars);
-			return;
-		} else {
-			setCars(carsData);
-		}
+		return filteredCars;
 	};
 
-	const searchCars = (searchPhrase, carsToSearchThrough) => {
-		const matchingCars = carsToSearchThrough.filter(car => {
-			const carName = `${car.brand} ${car.model}`;
-			return carName.toLowerCase().includes(searchPhrase.toLowerCase());
+	const handleRemoveCar = (brand, model, generation) => {
+		carsData = removeCar(brand, model, generation, carsData);
+		filteredCars = removeCar(brand, model, generation, filteredCars);
+		handleFilterCars();
+	};
+
+	const handleDisplayCars = () => {
+		const matchingCars = foundCars.filter(foundCar => {
+			for (let i = 0; i < filteredCars.length; i++) {
+				const filteredCar = filteredCars[i];
+				if (foundCar.id === filteredCar.id) {
+					return true;
+				}
+			}
 		});
 		setCars(matchingCars);
-		searchResultCars = matchingCars;
 	};
 
 	const handleSearchCars = searchPhrase => {
 		if (!searchPhrase) {
-			filterResultsCars ? setCars(filterResultsCars) : setCars(carsData);
-			searchResultCars = null;
-			return;
-		}
-
-		if (!filterResultsCars) {
-			searchCars(searchPhrase, carsData);
-			return;
+			foundCars = carsData;
 		} else {
-			searchCars(searchPhrase, filterResultsCars);
+			carsData.filter(() => {
+				// ================================================================================================================================================
+				const matchingCars = carsData.filter(car => {
+					const carName = `${car.brand} ${car.model}`;
+					return carName.toLowerCase().includes(searchPhrase.toLowerCase());
+				});
+				// ================================================================================================================================================
+				foundCars = matchingCars;
+			});
 		}
+		handleDisplayCars();
 	};
 
 	const setSortVariables = (selectedValue, a, b) => {
@@ -164,10 +160,8 @@ export const CarsProvider = ({ children }) => {
 		}
 	};
 
-	const handleSortCars = selectedValue => {
-		if (!cars.length) return;
-
-		const sortedCars = carsData.toSorted((a, b) => {
+	const sortCars = (selectedValue, carsToSort) => {
+		carsToSort.sort((a, b) => {
 			setSortVariables(selectedValue, a, b);
 
 			if (valueA < valueB) return -1;
@@ -175,56 +169,54 @@ export const CarsProvider = ({ children }) => {
 
 			return 0;
 		});
-
-		carsData = sortedCars;
-		setCars(carsData);
 	};
 
-	const filterCars = carsToFilter => {
-		const matchingCars = carsToFilter.filter(carToCheck => {
-			let conditionResults = [];
-			let statement;
+	const handleSortCars = selectedValue => {
+		if (!carsData.length) return;
 
-			for (let i = 0; i < filterBrandsOptions.length; i++) {
-				const brand = filterBrandsOptions[i];
-				if (carToCheck.brand === brand) {
-					conditionResults.push(true);
-				} else {
-					conditionResults.push(false);
-				}
-			}
-
-			for (let i = 0; i < filterYearsOptions.length; i++) {
-				const year = filterYearsOptions[i];
-				if (carToCheck.firstYearOfProduction <= year && carToCheck.lastYearOfProduction >= year) {
-					conditionResults.push(true);
-				} else {
-					conditionResults.push(false);
-				}
-			}
-
-			if (conditionResults.length === filterYearsOptions.length + filterBrandsOptions.length) {
-				statement = conditionResults.every(item => item === true);
-			}
-			return statement;
-		});
-		setCars(matchingCars);
-		filterResultsCars = matchingCars;
+		sortCars(selectedValue, carsData);
+		if (carsData.length === foundCars.length && carsData.length === filteredCars.length) {
+			handleDisplayCars();
+			return;
+		}
+		sortCars(selectedValue, foundCars);
+		handleDisplayCars();
 	};
 
-	const handleFiterCars = () => {
+	const handleFilterCars = () => {
 		if (!filterYearsOptions.length && !filterBrandsOptions.length) {
-			searchResultCars ? setCars(searchResultCars) : setCars(carsData);
-			filterResultsCars = null;
-			return;
-		}
-
-		if (!searchResultCars) {
-			filterCars(carsData);
-			return;
+			filteredCars = carsData;
 		} else {
-			filterCars(searchResultCars);
+			const matchingCars = carsData.filter(carToCheck => {
+				let conditionResults = [];
+				let statement;
+
+				for (let i = 0; i < filterBrandsOptions.length; i++) {
+					const brand = filterBrandsOptions[i];
+					if (carToCheck.brand === brand) {
+						conditionResults.push(true);
+					} else {
+						conditionResults.push(false);
+					}
+				}
+
+				for (let i = 0; i < filterYearsOptions.length; i++) {
+					const year = filterYearsOptions[i];
+					if (carToCheck.firstYearOfProduction <= year && carToCheck.lastYearOfProduction >= year) {
+						conditionResults.push(true);
+					} else {
+						conditionResults.push(false);
+					}
+				}
+
+				if (conditionResults.length === filterYearsOptions.length + filterBrandsOptions.length) {
+					statement = conditionResults.every(item => item === true);
+				}
+				return statement;
+			});
+			filteredCars = matchingCars;
 		}
+		handleDisplayCars();
 	};
 
 	const handleFilterParameters = filterOption => {
@@ -241,7 +233,7 @@ export const CarsProvider = ({ children }) => {
 				filterBrandsOptions.push(filterOption);
 			}
 		}
-		handleFiterCars();
+		handleFilterCars();
 	};
 
 	return (

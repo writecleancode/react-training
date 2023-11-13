@@ -9,7 +9,7 @@ import { CarInfoWrapper, DeleteButton, Wrapper } from './CarCards.styles';
 
 export const CarCard = ({
 	$isPreviewCard,
-	car: { brand, model, image, generation, firstYearOfProduction, lastYearOfProduction, facelift },
+	car: { id = '', brand, model, image, generation, firstYearOfProduction, lastYearOfProduction, facelift },
 }) => {
 	const { handleRemoveCar } = useContext(CarsContext);
 
@@ -34,6 +34,7 @@ export const CarCard = ({
 CarCard.propTypes = {
 	$isPreviewCard: PropTypes.bool,
 	car: PropTypes.shape({
+		id: PropTypes.string,
 		brand: PropTypes.string.isRequired,
 		model: PropTypes.string.isRequired,
 		image: PropTypes.shape({
