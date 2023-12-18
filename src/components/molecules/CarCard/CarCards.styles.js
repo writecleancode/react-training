@@ -19,16 +19,15 @@ export const CarInfoWrapper = styled.div`
 `;
 
 export const DeleteButton = styled(StyledButton)`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	content: '';
 	position: absolute;
 	bottom: 1.6rem;
 	right: 1.6rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 0.4rem 0.6rem;
 	fill: #fff;
-	transition: fill .3s;
+	transition: fill 0.3s;
 
 	&:hover {
 		fill: #555;
